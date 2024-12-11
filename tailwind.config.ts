@@ -10,9 +10,15 @@ export default {
     extend: {
       colors: {
         primary: "#5db075",
+        textSecondary: "#999999",
+        textPrimary: "#4f4f4f",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+      },
+      screens: {
+        xs: "375px",
+        sm: "480px",
       },
     },
   },
