@@ -3,8 +3,16 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <header className="border-t border-textPrimary">
+    <footer className="border-t border-textPrimary">
       <div className="px-5 py-5 mx-auto max-w-screen-xl flex-col justify-start items-center gap-10 flex text-textPrimary text-lg font-normal font-poppins">
+        <div className="w-full py-4">
+          <Link
+            href={"/"}
+            className="text-primary text-2xl font-semibold font-poppins text-start"
+          >
+            LOGO
+          </Link>
+        </div>
         <div className="self-stretch justify-between items-start inline-flex flex-col sm:flex-row gap-2">
           <div className="flex-col justify-start items-start gap-4 inline-flex">
             <Link href={"/"}>About Us</Link>
@@ -110,6 +118,6 @@ export default function Footer() {
         </div>
         <div>© 2015 - 2024 Company ® Global Inc.</div>
       </div>
-    </header>
+    </footer>
   );
 }
