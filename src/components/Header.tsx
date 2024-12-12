@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+//   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   return (
     <header className="bg-white shadow sticky z-10 top-0">
       <div className="w-full max-w-screen-xl mx-auto px-10 py-5 justify-between items-center flex">
