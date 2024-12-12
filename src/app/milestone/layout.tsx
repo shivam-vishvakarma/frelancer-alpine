@@ -39,7 +39,7 @@ export default function MilestoneLayout({
               <h3 className="sm:text-xl underline underline-offset-8">
                 Jimmy A.
               </h3>
-              <p className="text-xs">United Kingdom . Tue 11:27 AM</p>
+              <p className="text-xs">United Kingdom. Tue 11:27 AM</p>
             </div>
           </div>
           <nav className="font-semibold gap-2 text-xs  xs:text-base sm:gap-4 flex pb-2 text-nowrap">
