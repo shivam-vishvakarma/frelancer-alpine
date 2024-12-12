@@ -18,7 +18,7 @@ export default function Header() {
             LOGO
           </Link>
           <nav
-            className={`justify-start items-center gap-6 flex fixed md:relative transition-all duration-300 shadow-lg md:shadow-none md:flex-row flex-col ${isOpen ? "top-20" : "-top-full"} md:top-0 left-0 z-0 w-full`}
+            className={`justify-start items-center gap-6 flex fixed md:relative transition-all duration-300 shadow-lg md:shadow-none md:flex-row flex-col ${isOpen ? "top-20 bg-white" : "-top-full"} md:top-0 left-0 z-0 w-full`}
           >
             <div className="justify-start items-center gap-1 flex">
               <div className="justify-center items-center gap-2 flex">
