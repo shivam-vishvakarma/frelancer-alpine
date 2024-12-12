@@ -22,8 +22,11 @@ export default function Header() {
           >
             <div className="justify-start items-center gap-1 flex">
               <div className="justify-center items-center gap-2 flex">
-                <Link href={"/"} className="text-base font-normal font-poppins">
-                  Find work
+                <Link
+                  href={"/company"}
+                  className="text-base font-normal font-poppins"
+                >
+                  Company
                 </Link>
               </div>
               {/* <div className="w-4 h-4 relative opacity-80">
@@ -32,8 +35,11 @@ export default function Header() {
             </div>
             <div className="justify-start items-center gap-1 flex">
               <div className="justify-center items-center gap-2 flex">
-                <Link href={"/"} className="text-base font-normal font-poppins">
-                  Find work
+                <Link
+                  href={"/user"}
+                  className="text-base font-normal font-poppins"
+                >
+                  User
                 </Link>
               </div>
               {/* <div className="w-4 h-4 relative opacity-80">
@@ -42,8 +48,11 @@ export default function Header() {
             </div>
             <div className="justify-start items-center gap-1 flex">
               <div className="justify-center items-center gap-2 flex">
-                <Link href={"/"} className="text-base font-normal font-poppins">
-                  Find work
+                <Link
+                  href={"/milestone"}
+                  className="text-base font-normal font-poppins"
+                >
+                  Milestone
                 </Link>
               </div>
               {/* <div className="w-4 h-4 relative opacity-80">
