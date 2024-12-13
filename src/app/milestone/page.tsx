@@ -1,4 +1,5 @@
 import Divider from "@/components/Divider";
+import MilestoneTable from "@/components/MilestoneTable";
 import UserFileCard from "@/components/UserFileCard";
 
 export default function MilestoneOverview() {
@@ -27,7 +28,7 @@ export default function MilestoneOverview() {
           <p className="font-semibold">$1500.00</p>
         </div>
       </div>
-      <section className="grid grid-cols-12 my-4">
+      <section className="grid grid-cols-12 my-4 gap-4">
         {/* left section */}
         <div className="col-span-12 md:col-span-8 space-y-2">
           <h2>Milestone timeline</h2>
@@ -38,6 +39,9 @@ export default function MilestoneOverview() {
             <button className="text-xs border border-primary rounded p-1 text-primary">
               Manage milestones
             </button>
+          </div>
+          <div className="pt-2">
+            <MilestoneTable />
           </div>
         </div>
         {/* right section */}
