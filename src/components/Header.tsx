@@ -3,10 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import Divider from "./Divider";
+import NotificationCard from "./NotifictionCard";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-//   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   return (
     <header className="bg-white shadow sticky z-10 top-0">
       <div className="w-full max-w-screen-xl mx-auto px-10 py-5 justify-between items-center flex">
@@ -109,7 +111,10 @@ export default function Header() {
               className="w-full h-full object-cover"
             />
           </Link>
-          <button className="w-6 h-6 relative">
+          <button
+            onClick={() => setIsNotificationOpen((prev) => !prev)}
+            className="peer w-6 h-6 relative z-20"
+          >
             <Image
               src={"/bell_icon.svg"}
               alt={"bell_icon"}
@@ -118,6 +123,34 @@ export default function Header() {
               className="w-full h-full object-cover hover:animate-shake"
             />
           </button>
+          <div
+            onClick={() => setIsNotificationOpen((prev) => !prev)}
+            className={`fixed top-0 h-screen w-screen left-0 ${isNotificationOpen ? "block" : "hidden"}`}
+          ></div>
+          <div className="relative">
+            <div
+              className={`fixed px-2 md:absolute w-full right-0 top-20 md:top-10 z-20 sm:w-72 transition-transform duration-300 ${isNotificationOpen ? "translate-y-0" : "-translate-y-[200%]"}`}
+            >
+              <div className="rounded-xl space-y-2 bg-white shadow p-4">
+                <p className="text-xl font-semibold">Notification</p>
+                <Divider />
+                <div className="text-sm space-x-2">
+                  <button>All</button>
+                  <button>Downloaded</button>
+                  <button>Rejected</button>
+                  <button>Approved</button>
+                </div>
+                <Divider />
+                <div className="space-y-3">
+                  <NotificationCard />
+                  <NotificationCard />
+                  <NotificationCard />
+                  <NotificationCard />
+                  <NotificationCard />
+                </div>
+              </div>
+            </div>
+          </div>
           <Link href={"/"} className="w-6 h-6 relative">
             <Image
               src={"/profile_icon.svg"}
