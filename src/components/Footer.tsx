@@ -31,8 +31,10 @@ export default function Footer() {
             <Link href={"/"}>Cookie Settings</Link>
           </div>
           <div className="flex-col justify-start items-start gap-4 hidden lg:inline-flex">
-            <Link href={"/"}>Accessibility</Link>
-            <Link href={"/"}>Desktop App</Link>
+            <p className="text-secondary">Attributions</p>
+            <a href="https://storyset.com/user">
+              User illustrations by Storyset
+            </a>
             <Link href={"/"}>Cookie Policy</Link>
             <Link href={"/"}>Enterprise Solution</Link>
           </div>
