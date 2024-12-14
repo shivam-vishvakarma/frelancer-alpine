@@ -31,7 +31,7 @@ export default function LoginPage() {
     if (user) {
       router.push("/");
     }
-  }, [user,router]);
+  }, [user, router]);
 
   return (
     <div className="bg-bgMain text-black flex justify-center">
@@ -114,7 +114,7 @@ export default function LoginPage() {
                 </button>
               </form>
               <p className="mt-6 text-xs text-gray-600 text-center">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link
                   href="/signup"
                   className="text-black font-light underline"
