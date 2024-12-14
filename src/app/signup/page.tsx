@@ -38,7 +38,7 @@ export default function SignupPage() {
     if (user) {
       router.push("/");
     }
-  }, [user]);
+  }, [user, router]);
 
   return (
     <div className="bg-bgMain text-black flex justify-center">
