@@ -22,7 +22,7 @@ export default function Home() {
   }, []);
   return (
     <main className="py-4">
-      <div className="bg-primary-light">
+      <div className="bg-primary-light hidden md:block">
         <menu className="max-w-screen-xl mx-auto flex items-center justify-between p-4">
           <Link
             href={"/categories/all"}
@@ -48,13 +48,13 @@ export default function Home() {
           </Link>
         </menu>
       </div>
-      <section className="max-w-screen-xl mx-auto pt-4">
-        <div className="grid grid-cols-2">
-          <div className="w-4/5 space-y-6 p-4 my-4">
-            <h2 className="text-7xl font-bold font-rokkitt">
+      <section className="max-w-screen-xl mx-auto md:pt-4 p-2">
+        <div className="grid md:grid-cols-2">
+          <div className="w-4/5 space-y-3 md:space-y-6 p-4 md:my-4">
+            <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold font-rokkitt">
               How work should work
             </h2>
-            <p className="text-secondary text-xl font-rokkitt">
+            <p className="text-secondary text-sm md:text-xl font-rokkitt">
               Work with the largest network of independent professionals and get
               things
             </p>
@@ -85,36 +85,36 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="grid grid-cols-6 gap-4 my-10 mt-[10%] relative">
-          <div className="col-span-4 bg-primary-light p-8 rounded-xl">
-            <h2 className="text-4xl font-semibold">Why Choose Us</h2>
-            <ul className="w-1/2 space-y-2 my-4">
+        <div className="grid grid-cols-6 gap-4 my-10 md:mt-[10%] relative">
+          <div className="col-span-6 md:col-span-4 bg-primary-light p-8 rounded-xl">
+            <h2 className="text-2xl md:text-4xl font-semibold">Why Choose Us</h2>
+            <ul className="md:w-1/2 space-y-2 my-4">
               <li>
-                <h2 className="text-3xl font-semibold">Proof of quality</h2>
-                <p className="text-sm">
+                <h2 className="text-xl md:text-3xl font-semibold">Proof of quality</h2>
+                <p className="text-xs md:text-sm">
                   Check any pro&apos;s work samples, client reviews, and
                   identity verification
                 </p>
               </li>
               <li>
-                <h2 className="text-3xl font-semibold">
+                <h2 className="text-xl md:text-3xl font-semibold">
                   No cost until you hire
                 </h2>
-                <p className="text-sm">
+                <p className="text-xs md:text-sm">
                   Interview potential fits for your job, negotiate rates, and
                   only pay for work you approve.
                 </p>
               </li>
               <li>
-                <h2 className="text-3xl font-semibold">Safe and secure</h2>
-                <p className="text-sm">
+                <h2 className="text-xl md:text-3xl font-semibold">Safe and secure</h2>
+                <p className="text-xs md:text-sm">
                   Focus on your work knowing we help protect your data and
                   privacy. We&apos;re here with 24/7 support if you need it.
                 </p>
               </li>
             </ul>
           </div>
-          <div className="bg-[#1E244F] col-span-2 w-full h-full rounded-xl flex px-16 py-8 justify-end items-start text-white text-2xl font-semibold flex-col gap-4">
+          <div className="bg-[#1E244F] col-span-6 sm:col-span-4 md:col-span-2 w-full h-full rounded-xl flex md:px-16 p-8 justify-end items-start text-white text-xl md:text-2xl font-semibold flex-col gap-4">
             <h3>
               We&apos;re <br /> the world&apos;s work <br /> marketplace
             </h3>
@@ -126,7 +126,7 @@ export default function Home() {
                   viewBox="0 0 18 18"
                   fill="currentColor"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="size-[40px]"
+                  className="size-6 sm:size-10"
                 >
                   <path
                     id="Icon"
@@ -145,7 +145,7 @@ export default function Home() {
                 height="32"
                 viewBox="0 0 31 32"
                 fill="none"
-                className="size-10"
+                className="size-6 sm:size-10"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
@@ -156,8 +156,8 @@ export default function Home() {
                 />
               </svg>
               <p className="flex flex-col">
-                <span className="text-xl">Award winner</span>
-                <span className="text-sm font-normal">
+                <span className="text-sm sm:text-xl">Award winner</span>
+                <span className="text-xs sm:text-sm font-normal">
                   G2&apos;s 2021 Best Sofrware Awards
                 </span>
               </p>
@@ -168,14 +168,14 @@ export default function Home() {
             width={500}
             height={500}
             alt=""
-            className="absolute w-2/6 left-1/2 bottom-0"
+            className="absolute w-3/6 md:w-2/6 right-0 md:left-1/2 bottom-10 md:bottom-0"
           />
         </div>
         <div className="bg-secondary/10 p-4 rounded-xl backdrop-blur-lg">
-          <h2 className="text-5xl font-semibold">Popular services</h2>
-          <div className="grid grid-cols-3 gap-4 p-2 py-6 place-items-center">
-            <div className="w-3/5">
-              <div className="aspect-square">
+          <h2 className="text-3xl md:text-5xl font-semibold">Popular services</h2>
+          <div className="grid md:grid-cols-3 gap-4 p-2 py-6 place-items-center">
+            <div className="md:w-3/5">
+              <div className="md:aspect-square">
                 <Image
                   src={"/services_1_img.jpeg"}
                   width={500}
@@ -186,8 +186,8 @@ export default function Home() {
               </div>
               <p className="text-xl font-semibold">Application Development</p>
             </div>
-            <div className="w-3/5">
-              <div className="aspect-square">
+            <div className="md:w-3/5">
+              <div className="md:aspect-square">
                 <Image
                   src={"/services_1_img.jpeg"}
                   width={500}
@@ -198,8 +198,8 @@ export default function Home() {
               </div>
               <p className="text-xl font-semibold">Application Development</p>
             </div>
-            <div className="w-3/5">
-              <div className="aspect-square">
+            <div className="md:w-3/5">
+              <div className="md:aspect-square">
                 <Image
                   src={"/services_1_img.jpeg"}
                   width={500}
@@ -212,8 +212,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="my-10 bg-gradient-to-r from-green-400 via-primary-dark to-black p-4 py-28 rounded-xl text-white text-center flex flex-col items-center justify-center gap-8">
-          <h3 className="text-5xl font-semibold font-rokkitt">
+        <div className="my-10 bg-gradient-to-r from-green-400 via-primary-dark to-black p-4 md:py-28 rounded-xl text-white text-center flex flex-col items-center justify-center gap-8">
+          <h3 className="text-3xl md:text-5xl font-semibold font-rokkitt">
             Freelance services at your fingertips!
           </h3>
           <Link
