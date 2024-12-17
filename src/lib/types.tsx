@@ -3,3 +3,8 @@ export type Category = {
   name: string;
   slug: string;
 };
+
+export type Stats = {
+  title: string;
+  value: string;
+};

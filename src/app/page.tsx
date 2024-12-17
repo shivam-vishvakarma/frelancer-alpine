@@ -4,14 +4,14 @@ import {
   getCategories,
   getLandingPageStats,
 } from "@/lib/serverActions/dataFetchingActions";
-import { Category } from "@/lib/types";
+import { Category, Stats } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [categories, setCategories] = useState<Category[]>([] as Category[]);
-  const [stats, setStats] = useState<any[]>([] as any[]);
+  const [stats, setStats] = useState<Stats[]>([] as Stats[]);
   useEffect(() => {
     getCategories().then((data) => {
       setCategories(data);

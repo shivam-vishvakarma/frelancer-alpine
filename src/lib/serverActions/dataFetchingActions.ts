@@ -1,6 +1,6 @@
 "use server";
 
-import { Category } from "../types";
+import { Category, Stats } from "../types";
 
 export async function getCategories() {
   const categories: Category[] = [
@@ -34,7 +34,7 @@ export async function getCategories() {
 }
 
 export async function getLandingPageStats() {
-  const stats = [
+  const stats: Stats[] = [
     {
       title: "Artwork",
       value: "98k+",
