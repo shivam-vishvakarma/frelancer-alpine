@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 input:checked + label {
-  @apply border-primary shadow shadow-primary text-white bg-primary;
+  @apply border-primary-dark shadow shadow-primary-dark text-white bg-primary-dark;
 }

@@ -6,7 +6,7 @@ export default function MyOrdersPage() {
   return (
     <div className="space-y-2">
       <div className="flex gap-1 md:gap-4">
-        <button className="p-2 bg-primary rounded-full text-xs text-white">
+        <button className="p-2 bg-primary-dark rounded-full text-xs text-white">
           Active Orders
         </button>
         <button className="p-2 rounded-full text-xs bg-white">

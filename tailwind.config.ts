@@ -9,13 +9,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#5db075",
+        primary: {
+          dark: "#166534",
+          light: "#d4ffcf",
+        },
         secondary: "#999999",
         textPrimary: "#4f4f4f",
         bgMain: "#E8E8E8",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        rokkitt: ["Rokkitt", "serif"],
       },
       screens: {
         xs: "375px",

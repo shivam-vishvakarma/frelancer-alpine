@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="w-full py-4">
           <Link
             href={"/"}
-            className="text-primary text-2xl font-semibold font-poppins text-start"
+            className="text-primary-dark text-2xl font-semibold font-poppins text-start"
           >
             LOGO
           </Link>

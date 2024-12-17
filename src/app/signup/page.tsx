@@ -43,7 +43,7 @@ export default function SignupPage() {
   return (
     <div className="bg-bgMain text-black flex justify-center">
       <div className="max-w-screen-xl m-0 xl:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
-        <div className="flex-1 bg-primary text-center hidden lg:flex">
+        <div className="flex-1 bg-primary-dark text-center hidden lg:flex">
           <div
             className="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
             style={{
@@ -53,7 +53,7 @@ export default function SignupPage() {
         </div>
         <div className="lg:w-1/2 xl:w-6/12 p-6 sm:p-12">
           <div className="text-center">
-            <h2 className="text-2xl font-semibold text-primary">
+            <h2 className="text-2xl font-semibold text-primary-dark">
               Welcome to My Website
             </h2>
             <p className="mt-2 text-sm">
@@ -212,7 +212,7 @@ export default function SignupPage() {
                 </select>
                 <button
                   type="submit"
-                  className="mt-5 tracking-wide text-white font-semibold bg-primary text-white-500 w-full py-4 rounded-lg hover:bg-green-500 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                  className="mt-5 tracking-wide text-white font-semibold bg-primary-dark text-white-500 w-full py-4 rounded-lg hover:bg-primary-light transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                 >
                   <svg
                     className="w-6 h-6 -ml-2"

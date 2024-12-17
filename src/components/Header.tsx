@@ -19,8 +19,8 @@ export default function Header() {
     setUser(null);
   };
 
-  const getClassNames = (path: string) => {
-    return `justify-start items-center gap-1 flex ${pathname.includes(path) && "text-primary underline underline-offset-8"}`;
+  const getClassNames: (path: string) => string = (path: string) => {
+    return `justify-start items-center gap-1 flex ${pathname.includes(path) && "text-primary-dark underline underline-offset-8"}`;
   };
 
   return (
@@ -29,7 +29,7 @@ export default function Header() {
         <div className="justify-start items-center gap-10 flex">
           <Link
             href={"/"}
-            className="text-primary text-2xl font-semibold font-poppins"
+            className="text-primary-dark text-2xl font-semibold font-poppins"
           >
             LOGO
           </Link>
@@ -206,14 +206,14 @@ export default function Header() {
           ) : pathname !== "/login" ? (
             <Link
               href={"/login"}
-              className="text-primary text-base font-normal font-poppins border border-primary px-2 py-1 rounded"
+              className="text-primary-dark text-base font-normal font-poppins border border-primary-dark px-2 py-1 rounded"
             >
               Login
             </Link>
           ) : (
             <Link
               href={"/signup"}
-              className="text-primary text-base font-normal font-poppins border border-primary px-2 py-1 rounded"
+              className="text-primary-dark text-base font-normal font-poppins border border-primary-dark px-2 py-1 rounded"
             >
               Sign Up
             </Link>

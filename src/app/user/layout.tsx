@@ -11,10 +11,14 @@ export default function UserLayout({
 }>) {
   const pathname = usePathname();
 
+  const getLinkClasses: (path: string) => string = (path: string) => {
+    return `flex items-center gap-2 border p-2 md:p-4 bg-white rounded md:rounded-lg ${pathname === path ? "border-primary-dark" : ""}`;
+  };
+
   return (
     <section className="w-full bg-bgMain">
       <div className="w-full max-w-screen-xl mx-auto pt-10 space-y-10 px-2">
-        <div className="p-8 bg-primary text-white rounded-xl lg:w-2/3 mx-auto space-y-4">
+        <div className="p-8 bg-primary-dark text-white rounded-xl lg:w-2/3 mx-auto space-y-4">
           <div className="flex justify-between items-center">
             <p className="md:text-xl w-3/4">
               Advertisement Banner or Subscription Banner or Inspiration
@@ -49,7 +53,7 @@ export default function UserLayout({
         <div className="flex lg:w-2/3 mx-auto justify-between text-nowrap *:md:mx-1">
           <Link
             href="/user/my-orders"
-            className={`flex items-center gap-2 border p-2 md:p-4 bg-white rounded md:rounded-lg ${pathname === "/user/my-orders" ? "border-primary" : ""}`}
+            className={getLinkClasses("/user/my-orders")}
           >
             <div className="size-6 md:size-8 relative rounded-sm md:rounded p-1 overflow-hidden bg-bgMain">
               <Image
@@ -60,11 +64,13 @@ export default function UserLayout({
                 width={200}
               />
             </div>
-            <span className="text-xs sm:text-sm md:text-xl md:font-medium">My Orders</span>
+            <span className="text-xs sm:text-sm md:text-xl md:font-medium">
+              My Orders
+            </span>
           </Link>
           <Link
             href="/user/my-payments"
-            className={`flex items-center gap-2 border p-2 md:p-4 bg-white rounded md:rounded-lg ${pathname === "/user/my-payments" ? "border-primary" : ""}`}
+            className={getLinkClasses("/user/my-payments")}
           >
             <div className="size-6 md:size-8 relative rounded-sm md:rounded p-1 overflow-hidden bg-bgMain">
               <Image
@@ -75,11 +81,13 @@ export default function UserLayout({
                 width={200}
               />
             </div>
-            <span className="text-xs sm:text-sm md:text-xl md:font-medium">My Payments</span>
+            <span className="text-xs sm:text-sm md:text-xl md:font-medium">
+              My Payments
+            </span>
           </Link>
           <Link
             href="/user/biddings"
-            className={`flex items-center gap-2 border p-2 md:p-4 bg-white rounded md:rounded-lg ${pathname === "/user/biddings" ? "border-primary" : ""}`}
+            className={getLinkClasses("/user/biddings")}
           >
             <div className="size-6 md:size-8 relative rounded-sm md:rounded p-1 overflow-hidden bg-bgMain">
               <Image
@@ -90,11 +98,13 @@ export default function UserLayout({
                 width={200}
               />
             </div>
-            <span className="text-xs sm:text-sm md:text-xl md:font-medium">Bidding</span>
+            <span className="text-xs sm:text-sm md:text-xl md:font-medium">
+              Bidding
+            </span>
           </Link>
           <Link
             href="/user/explore-projects"
-            className={`sm:flex items-center gap-2 border p-2 md:p-4 bg-white rounded md:rounded-lg hidden  ${pathname === "/user/explore-projects" ? "border-primary" : ""}`}
+            className={getLinkClasses("/user/explore-projects")}
           >
             <div className="size-6 md:size-8 relative rounded-sm md:rounded p-1 overflow-hidden bg-bgMain">
               <Image
@@ -105,7 +115,9 @@ export default function UserLayout({
                 width={200}
               />
             </div>
-            <span className="text-xs sm:text-sm md:text-xl md:font-medium">Explore Projects</span>
+            <span className="text-xs sm:text-sm md:text-xl md:font-medium">
+              Explore Projects
+            </span>
           </Link>
         </div>
         <div className="lg:w-2/3 mx-auto">{children}</div>

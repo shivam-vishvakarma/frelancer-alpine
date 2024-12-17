@@ -33,10 +33,10 @@ export default function MilestoneOverview() {
         <div className="col-span-12 md:col-span-8 space-y-2">
           <h2>Milestone timeline</h2>
           <div className="flex gap-4 items-center">
-            <button className="text-primary text-sm underline underline-offset-4">
+            <button className="text-primary-dark text-sm underline underline-offset-4">
               See all upcoming milestones
             </button>
-            <button className="text-xs border border-primary rounded p-1 text-primary">
+            <button className="text-xs border border-primary-dark rounded p-1 text-primary-dark">
               Manage milestones
             </button>
           </div>
@@ -49,7 +49,7 @@ export default function MilestoneOverview() {
           <div className="border rounded-xl">
             <div className="flex p-2 gap-2 justify-end">
               <p className="text-xl font-semibold mr-auto">Recent files</p>
-              <button className="border p-2 size-8 rounded-full border-primary">
+              <button className="border p-2 size-8 rounded-full border-primary-dark">
                 <svg
                   width="16"
                   height="16"
@@ -63,7 +63,7 @@ export default function MilestoneOverview() {
                   />
                 </svg>
               </button>
-              <button className="border px-2 rounded border-primary">
+              <button className="border px-2 rounded border-primary-dark">
                 Upload
               </button>
             </div>

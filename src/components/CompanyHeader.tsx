@@ -31,7 +31,7 @@ export default function CompanyHeader() {
         <div className="pt-12 md:pt-20 px-5 flex items-center justify-between flex-wrap gap-4">
           <h2 className="text-2xl md:text-3xl font-semibold">Company Name</h2>
           <div className="flex gap-2 md:gap-4">
-            <button className="group hidden xs:flex border border-primary text-primary text-sm md:text-base p-1 md:p-2 gap-1 md:gap-2 items-center justify-center rounded-lg md:rounded-xl font-semibold hover:bg-primary hover:text-white">
+            <button className="group hidden xs:flex border border-primary-dark text-primary-dark text-sm md:text-base p-1 md:p-2 gap-1 md:gap-2 items-center justify-center rounded-lg md:rounded-xl font-semibold hover:bg-primary-dark hover:text-white">
               <svg
                 width="18"
                 height="18"
@@ -50,7 +50,7 @@ export default function CompanyHeader() {
               </svg>
               <span>Add to Favorites</span>{" "}
             </button>
-            <button className="group flex border-2 border-primary text-white p-1 md:p-2 text-sm md:text-base gap-1 md:gap-2 items-center justify-center rounded-lg md:rounded-xl font-semibold bg-primary hover:bg-white hover:text-primary">
+            <button className="group flex border-2 border-primary-dark text-white p-1 md:p-2 text-sm md:text-base gap-1 md:gap-2 items-center justify-center rounded-lg md:rounded-xl font-semibold bg-primary-dark hover:bg-white hover:text-primary">
               <svg
                 width="16"
                 height="16"
@@ -91,31 +91,31 @@ export default function CompanyHeader() {
           <nav className="font-semibold md:text-xl text-sm sm:gap-4 xs:px-2 md:gap-8 flex *:p-1 *:xs:p-2 *:md:p-4 *:md:px-8">
             <Link
               href="/company"
-              className={`${pathName === "/company" && "text-primary underline underline-offset-8"}`}
+              className={`${pathName === "/company" && "text-primary-dark underline underline-offset-8"}`}
             >
               Home
             </Link>
             <Link
               href="/company/about"
-              className={`${pathName === "/company/about" && "text-primary underline underline-offset-8"}`}
+              className={`${pathName === "/company/about" && "text-primary-dark underline underline-offset-8"}`}
             >
               About
             </Link>
             <Link
               href="/company/services"
-              className={`${pathName === "/company/services" && "text-primary underline underline-offset-8"}`}
+              className={`${pathName === "/company/services" && "text-primary-dark underline underline-offset-8"}`}
             >
               Services
             </Link>
             <Link
               href="/company/portfolio"
-              className={`${pathName === "/company/portfolio" && "text-primary underline underline-offset-8"}`}
+              className={`${pathName === "/company/portfolio" && "text-primary-dark underline underline-offset-8"}`}
             >
               Portfolio
             </Link>
             <Link
               href="/company/people"
-              className={`${pathName === "/company/people" && "text-primary underline underline-offset-8"}`}
+              className={`${pathName === "/company/people" && "text-primary-dark underline underline-offset-8"}`}
             >
               People
             </Link>

@@ -16,7 +16,7 @@ export default function Pagination() {
   return (
     <div className="flex justify-center gap-4 py-4">
       <button
-        className="px-4 py-2 font-semibold rounded text-xs bg-primary text-white"
+        className="px-4 py-2 font-semibold rounded text-xs bg-primary-dark text-white"
         onClick={() => handlePageChange(page - 1)}
       >
         Prev
@@ -25,7 +25,7 @@ export default function Pagination() {
         <button
           key={p}
           className={`px-4 py-2 font-semibold rounded text-xs ${
-            p === page ? "bg-primary text-white" : "bg-white"
+            p === page ? "bg-primary-dark text-white" : "bg-white"
           }`}
           onClick={() => handlePageChange(p)}
         >
@@ -33,7 +33,7 @@ export default function Pagination() {
         </button>
       ))}
       <button
-        className="px-4 py-2 font-semibold rounded text-xs bg-primary text-white"
+        className="px-4 py-2 font-semibold rounded text-xs bg-primary-dark text-white"
         onClick={() => handlePageChange(page + 1)}
       >
         Next
