@@ -75,10 +75,10 @@ export default function Header() {
                 <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
               </div> */}
             </div>
-            <div className={getClassNames("/work")}>
+            <div className={getClassNames("/explore")}>
               <div className="justify-center items-center gap-2 flex">
-                <Link href={"/"} className="text-base font-normal font-poppins">
-                  Find work
+                <Link href={"/explore"} className="text-base font-normal font-poppins">
+                  Explore Projects
                 </Link>
               </div>
               {/* <div className="w-4 h-4 relative opacity-80">

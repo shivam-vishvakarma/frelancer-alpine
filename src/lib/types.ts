@@ -8,3 +8,9 @@ export type Stats = {
   title: string;
   value: string;
 };
+
+export type Domain = {
+    id: string;
+    title: string;
+    slug: string;
+}

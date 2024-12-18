@@ -25,7 +25,7 @@ export default function Home() {
       <div className="bg-primary-light hidden md:block">
         <menu className="max-w-screen-xl mx-auto flex items-center justify-between p-4">
           <Link
-            href={"/categories/all"}
+            href={"/category/all"}
             className="bg-primary-dark py-1 px-4 rounded-full text-white"
           >
             All Categories
@@ -33,14 +33,14 @@ export default function Home() {
           {categories.map((category) => (
             <Link
               key={category.id}
-              href={`/categories/${category.slug}`}
+              href={`/category/${category.slug}`}
               className="bg-bgMain py-1 px-4 rounded-full"
             >
               {category.name}
             </Link>
           ))}
           <Link
-            href={"/categories"}
+            href={"/category"}
             className="bg-bgMain py-1 px-4 rounded-full flex gap-1"
           >
             <Image src={"/filter_icon.svg"} width={20} height={20} alt="" />
