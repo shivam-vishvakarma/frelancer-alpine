@@ -1,5 +1,3 @@
-"use client";
-
 import GalleryCard from "@/components/GalleryCard";
 import {
   getCategories,
@@ -8,19 +6,10 @@ import {
 import { Category, Stats } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-export default function Home() {
-  const [categories, setCategories] = useState<Category[]>([] as Category[]);
-  const [stats, setStats] = useState<Stats[]>([] as Stats[]);
-  useEffect(() => {
-    getCategories().then((data) => {
-      setCategories(data);
-    });
-    getLandingPageStats().then((data) => {
-      setStats(data);
-    });
-  }, []);
+export default async function Home() {
+  const categories: Category[] = await getCategories();
+  const stats: Stats[] = await getLandingPageStats();
   return (
     <main className="py-4">
       <div className="bg-primary-light hidden md:block">
@@ -257,14 +246,18 @@ export default function Home() {
             className="w-full h-full object-cover brightness-75 saturate-200"
           />
           <div className="absolute w-full h-full bg-blue-500/40 top-0 left-0 flex flex-col gap-2 md:gap-4 lg:gap-6 xl:gap-8 justify-end text-white p-2 md:p-4 font-rokkitt">
-            <h3 className="text-3xl lg:text-5xl md:w-1/3">Find talent your way</h3>
+            <h3 className="text-3xl lg:text-5xl md:w-1/3">
+              Find talent your way
+            </h3>
             <p className="text-sm md:text-xl md:w-2/3 xl:w-1/3">
               Work with the largest network of independent professionals and get
               things done-from quick turnarounds to big transformations.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
               <div className="bg-primary-dark p-2 md:p-4 hover:bg-white hover:text-primary-dark transition-all duration-300 flex flex-col gap-2 md:gap-4 rounded-md md:rounded-xl">
-                <h4 className="text-xl md:text-2xl lg:text-3xl">Post a job and hire a professional</h4>
+                <h4 className="text-xl md:text-2xl lg:text-3xl">
+                  Post a job and hire a professional
+                </h4>
                 <p className="flex items-center text-sm lg:text-lg gap-1 hover:gap-3 transition-all duration-300">
                   <Link href={"/signup"}>Get Started</Link>
                   <svg
@@ -293,7 +286,9 @@ export default function Home() {
                 </p>
               </div>
               <div className="bg-primary-dark p-2 md:p-4 hover:bg-white hover:text-primary-dark transition-all duration-300 flex flex-col gap-2 md:gap-4 rounded-md md:rounded-xl">
-                <h4 className="text-xl md:text-2xl lg:text-3xl">Browse and buy some projects</h4>
+                <h4 className="text-xl md:text-2xl lg:text-3xl">
+                  Browse and buy some projects
+                </h4>
                 <p className="flex items-center text-sm lg:text-lg gap-1 hover:gap-3 transition-all duration-300">
                   <Link href={"/signup"}>Project Catalog</Link>
                   <svg
@@ -356,7 +351,9 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <h3 className="text-3xl md:text-5xl font-semibold my-4 md:my-8">Made on Lorem Ipsum</h3>
+          <h3 className="text-3xl md:text-5xl font-semibold my-4 md:my-8">
+            Made on Lorem Ipsum
+          </h3>
           <GalleryCard mainImg="/services_2_img.jpeg" />
         </div>
         <div className="bg-primary-dark aspect-[16/4] relative my-4 md:my-10 rounded-xl grid md:grid-cols-2 font-rokkitt">
@@ -374,7 +371,7 @@ export default function Home() {
                     d="M5.28468 10.2749L10.6102 15.0835L10.6102 15.0835C10.8709 15.319 11.0262 15.6475 11.0262 15.9999C11.0262 16.3522 10.8709 16.6808 10.6102 16.9162C10.3509 17.1504 10.0072 17.276 9.65625 17.276C9.30531 17.276 8.96157 17.1504 8.70226 16.9162L0.952633 9.91655C0.823551 9.80025 0.718693 9.65986 0.646267 9.50222C0.573774 9.34442 0.535769 9.17358 0.535769 8.99987C0.535769 8.82617 0.573774 8.65532 0.646267 8.49753C0.718693 8.33988 0.823549 8.19949 0.952633 8.08319L8.70226 1.08353C8.96157 0.849314 9.30531 0.723768 9.65625 0.723768C10.0072 0.723768 10.3509 0.849314 10.6102 1.08353C10.8709 1.31897 11.0262 1.64753 11.0262 1.99987C11.0262 2.35221 10.8709 2.68078 10.6102 2.91621L10.6102 2.91626L5.28468 7.72487L27.0938 7.72487C27.4444 7.72487 27.7878 7.8503 28.0469 8.08431C28.3073 8.31954 28.4625 8.64782 28.4625 8.99987C28.4625 9.35192 28.3073 9.6802 28.0469 9.91543C27.7878 10.1494 27.4444 10.2749 27.0938 10.2749H5.28468Z"
                     fill="currentColor"
                     stroke="currentColor"
-                    stroke-width="0.8"
+                    strokeWidth="0.8"
                   />
                 </svg>
               </button>
@@ -390,7 +387,7 @@ export default function Home() {
                     d="M18.3952 2.64896L18.3952 2.64892C18.1336 2.4211 17.9738 2.09929 17.9738 1.74991C17.9738 1.40053 18.1336 1.07872 18.3952 0.850904C18.655 0.624613 18.9969 0.505097 19.3438 0.505097C19.6906 0.505097 20.0325 0.624613 20.2923 0.850904L28.042 7.60058L18.3952 2.64896ZM18.3952 2.64896L23.6866 7.25616L1.90625 7.25616C1.55971 7.25616 1.21812 7.37557 0.958528 7.60166C0.697188 7.82928 0.5375 8.15081 0.5375 8.49991C0.5375 8.84901 0.697189 9.17055 0.958528 9.39816C1.21811 9.62426 1.55971 9.74366 1.90625 9.74366H23.6866L18.3952 14.3509L18.3952 14.3509M18.3952 2.64896L18.3952 14.3509M18.3952 14.3509C18.1336 14.5787 17.9738 14.9005 17.9738 15.2499C17.9738 15.5993 18.1336 15.9211 18.3952 16.1489C18.655 16.3752 18.9969 16.4947 19.3438 16.4947C19.6906 16.4947 20.0325 16.3752 20.2923 16.1489L28.042 9.39925L18.3952 14.3509ZM28.3514 8.00449C28.2777 7.84991 28.1717 7.71335 28.0423 7.6009V9.39892C28.1717 9.28648 28.2777 9.14991 28.3514 8.99534C28.4252 8.84037 28.4642 8.67183 28.4642 8.49991C28.4642 8.328 28.4252 8.15945 28.3514 8.00449Z"
                     fill="currentColor"
                     stroke="currentColor"
-                    stroke-width="0.8"
+                    strokeWidth="0.8"
                   />
                 </svg>
               </button>
@@ -420,7 +417,9 @@ export default function Home() {
                     />
                   </svg>
                 </div>
-                <h5 className="text-xl ld:text-2xl font-semibold">Jacob Molen</h5>
+                <h5 className="text-xl ld:text-2xl font-semibold">
+                  Jacob Molen
+                </h5>
                 <p className="text-center text-xs md:text-sm lg:w-4/5">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry.
@@ -430,7 +429,8 @@ export default function Home() {
           </div>
           <div className="w-full h-full flex p-4 md:order-2 md:p-0 justify-center gap-3 lg:gap-6 items-start text-white flex-col">
             <h3 className="text-2xl xl:text-4xl xl:w-3/5">
-              What we have done & <br className="hidden md:block" /> what our Customers say
+              What we have done & <br className="hidden md:block" /> what our
+              Customers say
             </h3>
             <p className="text-sm md:text-lg lg:w-3/5 text-secondary">
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -439,16 +439,76 @@ export default function Home() {
           </div>
         </div>
         <div className="grid grid-cols-5 md:mt-20">
-            <Image src={"/logo_1.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
-            <Image src={"/logo_2.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
-            <Image src={"/logo_3.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
-            <Image src={"/logo_4.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
-            <Image src={"/logo_5.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
-            <Image src={"/logo_1.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
-            <Image src={"/logo_2.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
-            <Image src={"/logo_3.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
-            <Image src={"/logo_4.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
-            <Image src={"/logo_5.png"} width={500} height={500} alt="" className="saturate-0 w-full h-full object-contain scale-75" />
+          <Image
+            src={"/logo_1.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
+          <Image
+            src={"/logo_2.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
+          <Image
+            src={"/logo_3.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
+          <Image
+            src={"/logo_4.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
+          <Image
+            src={"/logo_5.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
+          <Image
+            src={"/logo_1.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
+          <Image
+            src={"/logo_2.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
+          <Image
+            src={"/logo_3.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
+          <Image
+            src={"/logo_4.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
+          <Image
+            src={"/logo_5.png"}
+            width={500}
+            height={500}
+            alt=""
+            className="saturate-0 w-full h-full object-contain scale-75"
+          />
         </div>
       </section>
     </main>

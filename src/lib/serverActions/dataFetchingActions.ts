@@ -3,6 +3,8 @@
 import { Category, Domain, Stats } from "../types";
 
 export async function getCategories() {
+  console.log("getCategories");
+
   const categories: Category[] = [
     {
       id: 1,
@@ -208,4 +210,343 @@ export async function getAvailableCategories(slug: string) {
       break;
   }
   return categories;
+}
+
+export async function getPlansByCategory() {
+  const plans = [
+    {
+      slug: "basic",
+      plan_name: "Basic",
+      plan_items: ["Item 1", "Item 2", "Item 3"],
+    },
+    {
+      slug: "standard",
+      plan_name: "Standard",
+      plan_items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+    },
+    {
+      slug: "premium",
+      plan_name: "Premium",
+      plan_items: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"],
+    },
+  ];
+  return plans;
+}
+
+export async function getTechnologyStack() {
+  const techStack = [
+    {
+      title: "MERN",
+      slug: "mern",
+    },
+    {
+      title: "Django",
+      slug: "django",
+    },
+    {
+      title: "Laravel",
+      slug: "laravel",
+    },
+    {
+      title: "Spring Boot",
+      slug: "spring-boot",
+    },
+    {
+      title: "Flutter",
+      slug: "flutter",
+    },
+    {
+      title: "React Native",
+      slug: "react-native",
+    },
+    {
+      title: "Tensorflow",
+      slug: "tensorflow",
+    },
+    {
+      title: "PyTorch",
+      slug: "pytorch",
+    },
+  ];
+  return techStack;
+}
+
+export async function getTechnologyStackDetails(stack: string) {
+  const stackDetails = [
+    {
+      title: "MERN",
+      image: "https://picsum.photos/300/200",
+      description:
+        "MERN is a full-stack JavaScript solution that helps you build fast, robust, and maintainable production web applications using MongoDB, Express, React, and Node.js.",
+      slug: "mern",
+      technologies: [
+        {
+          title: "MongoDB",
+          usedFor: "Database",
+          logo: "mongodb",
+          why: "MongoDB is a general-purpose, document-based, distributed database built for modern application developers and for the cloud era.",
+        },
+        {
+          title: "Express",
+          usedFor: "Backend",
+          logo: "express",
+          why: "Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.",
+        },
+        {
+          title: "React",
+          usedFor: "Frontend",
+          logo: "react",
+          why: "React is a JavaScript library for building user interfaces. It is maintained by Facebook and a community of individual developers and companies.",
+        },
+        {
+          title: "Node.js",
+          usedFor: "Runtime",
+          logo: "nodejs",
+          why: "Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser.",
+        },
+      ],
+      features: [
+        "Single Page Application",
+        "Server Side Rendering",
+        "SEO Friendly",
+        "Scalable",
+        "Real-time Web Applications",
+        "Cross Platform",
+      ],
+    },
+    {
+      title: "Django",
+      image: "https://picsum.photos/300/200",
+      description:
+        "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.",
+      slug: "django",
+      technologies: [
+        {
+          title: "Django",
+          usedFor: "Backend",
+          logo: "django",
+          why: "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.",
+        },
+        {
+          title: "Django REST Framework",
+          usedFor: "API",
+          logo: "django-rest-framework",
+          why: "Django REST framework is a powerful and flexible toolkit for building Web APIs.",
+        },
+        {
+          title: "PostgreSQL",
+          usedFor: "Database",
+          logo: "postgresql",
+          why: "PostgreSQL is a powerful, open-source object-relational database system.",
+        },
+      ],
+      features: [
+        "Rapid Development",
+        "Secure",
+        "Scalable",
+        "Versatile",
+        "SEO Friendly",
+        "Cross Platform",
+      ],
+    },
+    {
+      title: "Laravel",
+      image: "https://picsum.photos/300/200",
+      description:
+        "Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling.",
+      slug: "laravel",
+      technologies: [
+        {
+          title: "Laravel",
+          usedFor: "Backend",
+          logo: "laravel",
+          why: "Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling.",
+        },
+        {
+          title: "MySQL",
+          usedFor: "Database",
+          logo: "mysql",
+          why: "MySQL is an open-source relational database management system.",
+        },
+        {
+          title: "Blade",
+          usedFor: "Template Engine",
+          logo: "blade",
+          why: "Blade is the simple, yet powerful templating engine provided with Laravel.",
+        },
+      ],
+      features: [
+        "Rapid Development",
+        "Secure",
+        "Scalable",
+        "Versatile",
+        "SEO Friendly",
+        "Cross Platform",
+      ],
+    },
+    {
+      title: "Spring Boot",
+      image: "https://picsum.photos/300/200",
+      description:
+        "Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can just run.",
+      slug: "spring-boot",
+      technologies: [
+        {
+          title: "Spring Boot",
+          usedFor: "Backend",
+          logo: "spring-boot",
+          why: "Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can just run.",
+        },
+        {
+          title: "Spring Data JPA",
+          usedFor: "Data Access",
+          logo: "spring-data-jpa",
+          why: "Spring Data JPA, part of the larger Spring Data family, makes it easy to easily implement JPA based repositories.",
+        },
+        {
+          title: "MySQL",
+          usedFor: "Database",
+          logo: "mysql",
+          why: "MySQL is an open-source relational database management system.",
+        },
+      ],
+      features: [
+        "Rapid Development",
+        "Secure",
+        "Scalable",
+        "Versatile",
+        "SEO Friendly",
+        "Cross Platform",
+      ],
+    },
+    {
+      title: "Flutter",
+      image: "https://picsum.photos/300/200",
+      description:
+        "Flutter is Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.",
+      slug: "flutter",
+      technologies: [
+        {
+          title: "Flutter",
+          usedFor: "Frontend",
+          logo: "flutter",
+          why: "Flutter is Google's UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.",
+        },
+        {
+          title: "Dart",
+          usedFor: "Programming Language",
+          logo: "dart",
+          why: "Dart is a client-optimized language for fast apps on any platform.",
+        },
+      ],
+      features: [
+        "Single Codebase",
+        "Hot Reload",
+        "Expressive and Flexible UI",
+        "Native Performance",
+        "Cross Platform",
+        "Open Source",
+      ],
+    },
+    {
+      title: "React Native",
+      image: "https://picsum.photos/300/200",
+      description:
+        "React Native combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces.",
+      slug: "react-native",
+      technologies: [
+        {
+          title: "React Native",
+          usedFor: "Frontend",
+          logo: "react-native",
+          why: "React Native combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces.",
+        },
+        {
+          title: "Redux",
+          usedFor: "State Management",
+          logo: "redux",
+          why: "Redux is a predictable state container for JavaScript apps.",
+        },
+        {
+          title: "Expo",
+          usedFor: "Development Tool",
+          logo: "expo",
+          why: "Expo is an open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React.",
+        },
+      ],
+      features: [
+        "Single Codebase",
+        "Hot Reload",
+        "Expressive and Flexible UI",
+        "Native Performance",
+        "Cross Platform",
+        "Open Source",
+      ],
+    },
+    {
+      title: "Tensorflow",
+      image: "https://picsum.photos/300/200",
+      description:
+        "TensorFlow is an end-to-end open-source platform for machine learning.",
+      slug: "tensorflow",
+      technologies: [
+        {
+          title: "Tensorflow",
+          usedFor: "Machine Learning",
+          logo: "tensorflow",
+          why: "TensorFlow is an end-to-end open-source platform for machine learning.",
+        },
+        {
+          title: "Keras",
+          usedFor: "Deep Learning",
+          logo: "keras",
+          why: "Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano.",
+        },
+        {
+          title: "Python",
+          usedFor: "Programming Language",
+          logo: "python",
+          why: "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+        },
+      ],
+      features: [
+        "Machine Learning",
+        "Deep Learning",
+        "Neural Networks",
+        "Open Source",
+        "Cross Platform",
+        "Scalable",
+      ],
+    },
+    {
+      title: "PyTorch",
+      image: "https://picsum.photos/300/200",
+      description:
+        "PyTorch is an open source machine learning library based on the Torch library.",
+      slug: "pytorch",
+      technologies: [
+        {
+          title: "PyTorch",
+          usedFor: "Machine Learning",
+          logo: "pytorch",
+          why: "PyTorch is an open source machine learning library based on the Torch library.",
+        },
+        {
+          title: "Python",
+          usedFor: "Programming Language",
+          logo: "python",
+          why: "Python is a programming language that lets you work quickly and integrate systems more effectively.",
+        },
+      ],
+      features: [
+        "Machine Learning",
+        "Deep Learning",
+        "Neural Networks",
+        "Open Source",
+        "Cross Platform",
+        "Scalable",
+      ],
+    },
+  ];
+  return stackDetails.find((stackDetail) => stackDetail.slug === stack);
 }

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Divider from "./Divider";
 import NotificationCard from "./NotifictionCard";
-import { useUser } from "@/context/userContext";
+import { useUser } from "@/hooks/context/userContext";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
@@ -77,7 +77,10 @@ export default function Header() {
             </div>
             <div className={getClassNames("/explore")}>
               <div className="justify-center items-center gap-2 flex">
-                <Link href={"/explore"} className="text-base font-normal font-poppins">
+                <Link
+                  href={"/explore"}
+                  className="text-base font-normal font-poppins"
+                >
                   Explore Projects
                 </Link>
               </div>
