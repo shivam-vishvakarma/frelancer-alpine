@@ -1,7 +1,7 @@
 import BreadCrum from "@/components/BreadCrum";
 import { getPlansByCategory } from "@/lib/serverActions/dataFetchingActions";
 import { bread } from "@/lib/types";
-import getTitleFromSlug from "@/lib/utils/utils";
+import {getTitleFromSlug} from "@/lib/utils/utils";
 import Link from "next/link";
 import PlanCard from "@/components/PlanCard";
 

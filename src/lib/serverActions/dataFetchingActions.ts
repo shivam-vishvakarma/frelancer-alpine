@@ -1,6 +1,6 @@
 "use server";
 
-import { Category, Domain, Stats } from "../types";
+import { Category, Company, Domain, Stats } from "../types";
 
 export async function getCategories() {
   console.log("getCategories");
@@ -549,4 +549,106 @@ export async function getTechnologyStackDetails(stack: string) {
     },
   ];
   return stackDetails.find((stackDetail) => stackDetail.slug === stack);
+}
+
+export async function getCompaniesByTechStack() {
+  const companies: Company[] = [
+    {
+      logo: "https://picsum.photos/300/200",
+      name: "Alpine Technologies",
+      slug: "alpine-technologies",
+      domains: ["Web Dev", "App Dev", "AI", "Finance"],
+      location: "Nagpur",
+      workingTime: "Full Time",
+      ratings: 4.5,
+      reviews: 120,
+      description:
+        "Alpine Technologies is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    },
+    {
+      logo: "https://picsum.photos/300/200",
+      name: "Tech Solutions",
+      slug: "tech-solutions",
+      domains: ["Web Dev", "App Dev", "AI", "Finance"],
+      location: "Pune",
+      workingTime: "Part Time",
+      ratings: 4.0,
+      reviews: 100,
+      description:
+        "Tech Solutions is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    },
+    {
+      logo: "https://picsum.photos/300/200",
+      name: "CodeX",
+      slug: "codex",
+      domains: ["Web Dev", "App Dev", "AI", "Finance"],
+      location: "Mumbai",
+      workingTime: "Full Time",
+      ratings: 4.8,
+      reviews: 150,
+      description:
+        "CodeX is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    },
+    {
+      logo: "https://picsum.photos/300/200",
+      name: "Web Devs",
+      slug: "web-devs",
+      domains: ["Web Dev", "App Dev", "AI", "Finance"],
+      location: "Nashik",
+      workingTime: "Part Time",
+      ratings: 4.2,
+      reviews: 110,
+      description:
+        "Web Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    },
+    {
+      logo: "https://picsum.photos/300/200",
+      name: "App Devs",
+      slug: "app-devs",
+      domains: ["Web Dev", "App Dev", "AI", "Finance"],
+      location: "Aurangabad",
+      workingTime: "Full Time",
+      ratings: 4.6,
+      reviews: 130,
+      description:
+        "App Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    },
+    {
+      logo: "https://picsum.photos/300/200",
+      name: "AI Devs",
+      slug: "ai-devs",
+      domains: ["Web Dev", "App Dev", "AI", "Finance"],
+      location: "Thane",
+      workingTime: "Part Time",
+      ratings: 4.1,
+      reviews: 90,
+      description:
+        "AI Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    },
+    {
+      logo: "https://picsum.photos/300/200",
+      name: "Finance Devs",
+      slug: "finance-devs",
+      domains: ["Web Dev", "App Dev", "AI", "Finance"],
+      location: "Solapur",
+      workingTime: "Full Time",
+      ratings: 4.7,
+      reviews: 140,
+      description:
+        "Finance Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    },
+    {
+      logo: "https://picsum.photos/300/200",
+      name: "Tech Devs",
+      slug: "tech-devs",
+      domains: ["Web Dev", "App Dev", "AI", "Finance"],
+      location: "Kolhapur",
+      workingTime: "Part Time",
+      ratings: 4.3,
+      reviews: 105,
+      description:
+        "Tech Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    },
+  ];
+  return companies;
 }

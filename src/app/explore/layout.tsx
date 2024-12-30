@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { Suspense } from "react";
-import Loading from "../loading";
+import Title from "./component/Title";
 
 export default function ExploreLayout({
   children,
@@ -17,13 +16,15 @@ export default function ExploreLayout({
           alt=""
           className="w-full h-full object-cover absolute inset-0 -z-10"
         />
-        <h3 className="uppercase text-3xl md:text-5xl">dESIGN yOUR wEBSITE</h3>
+        <h3 className="uppercase text-3xl md:text-5xl">
+          <Title />
+        </h3>
         <p className="px-4 sm:w-1/2 lg:w-1/3">
           Aliquam vitae turpis in diam convallis finibus in at risus. Nullam in
           scelerisque leo, eget sollicitudin velit bestibulum.
         </p>
       </section>
-      <Suspense fallback={<Loading />}>{children}</Suspense>
+      {children}
     </main>
   );
 }

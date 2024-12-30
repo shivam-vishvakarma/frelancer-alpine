@@ -23,3 +23,15 @@ export type bread = {
   name: string;
   slug: string;
 };
+
+export type Company = {
+  logo: string;
+  name: string;
+  slug: string;
+  domains: string[];
+  location: string;
+  workingTime: string;
+  ratings: number;
+  reviews: number;
+  description: string;
+};

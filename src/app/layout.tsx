@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import UserProvider from "@/hooks/context/userContext";
+import Provider from "@/hooks/context/provider";
 
 export const metadata: Metadata = {
   title: "My Site",
@@ -17,11 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <UserProvider>
+        <Provider>
           <Header />
           {children}
           <Footer />
-        </UserProvider>
+        </Provider>
       </body>
     </html>
   );

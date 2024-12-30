@@ -106,6 +106,7 @@ export default function SignupPage() {
                       checked={form.joinas === "client"}
                       required
                       onChange={handleChange}
+                      className="hidden"
                     />
                     <label
                       htmlFor="client"
@@ -136,6 +137,7 @@ export default function SignupPage() {
                       hidden
                       name="joinas"
                       id="company"
+                      className="hidden"
                       required
                       checked={form.joinas === "company"}
                       value="company"

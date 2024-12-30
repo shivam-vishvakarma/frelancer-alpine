@@ -2,7 +2,7 @@ import BreadCrum from "@/components/BreadCrum";
 import CategoryCard from "@/components/CategoryCard";
 import { getAvailableCategories } from "@/lib/serverActions/dataFetchingActions";
 import { bread } from "@/lib/types";
-import getTitleFromSlug from "@/lib/utils/utils";
+import {getTitleFromSlug} from "@/lib/utils/utils";
 import Link from "next/link";
 
 export default async function CategoryPage({

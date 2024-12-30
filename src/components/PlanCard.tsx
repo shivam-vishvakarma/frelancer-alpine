@@ -13,8 +13,16 @@ export default async function PlansPage({
     <div className="bg-white group hover:-translate-y-2 transition-all duration-300 border-2 border-primary-dark rounded-lg shadow hover:shadow-lg">
       <div className="p-4 grid gap-2">
         <div className="flex justify-between items-center">
-          <h3 className="text-3xl leading-6 font-semibold p-2 text-primary-dark">
-            {plan_name}
+          <h3 className="text-3xl leading-6 font-semibold p-2 text-primary-dark flex items-center justify-start gap-2">
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              className="size-10 inline-block"
+            >
+              <path fill="none" d="M0 0H24V24H0z" />
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1 12H6l5-10v10zm2 6V10h5l-5 10z" />
+            </svg>
+            <span>{plan_name}</span>
           </h3>
           <span>
             <svg

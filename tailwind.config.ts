@@ -38,5 +38,8 @@ export default {
     },
   },
   darkMode: "class",
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/container-queries"),
+    require("@tailwindcss/forms"),
+  ],
 } satisfies Config;

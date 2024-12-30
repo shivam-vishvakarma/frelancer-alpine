@@ -104,7 +104,7 @@ export default function Header() {
               </div>
               <input
                 type="text"
-                className="text-[#999999] text-sm font-normal font-poppins focus:outline-none bg-transparent"
+                className="text-[#999999] focus:ring-0 p-0 text-sm font-normal font-poppins focus:outline-none bg-transparent border-none"
                 placeholder="Search"
               />
             </label>
@@ -112,7 +112,7 @@ export default function Header() {
               <select
                 name="type"
                 id="jobType"
-                className="bg-transparent px-2 focus:outline-none text-[#999999]"
+                className="bg-transparent focus:outline-none p-0 px-2 pr-8 focus:ring-0 text-[#999999] border-none"
               >
                 <option value="fullTime">Job</option>
                 <option value="partTime">Work</option>
