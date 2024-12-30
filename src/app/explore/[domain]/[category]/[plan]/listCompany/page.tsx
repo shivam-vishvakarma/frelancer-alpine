@@ -14,6 +14,8 @@ import Sort from "./component/Sort";
 import Filters from "./component/Filters";
 import SideInfo from "./component/SideInfo";
 import ToggleBtn from "./component/ToggleBtn";
+import Pagination from "@/components/Pagination";
+import OWCModal from "./component/OWCModal";
 
 export default async function CompanyPage({
   params,
@@ -91,11 +93,13 @@ export default async function CompanyPage({
           {companies.map((company) => (
             <CompanyCard key={company.slug} company={company} />
           ))}
+          <OWCModal />
         </div>
         <div className="col-span-2 hidden lg:block">
           <SideInfo />
         </div>
       </section>
+      <Pagination />
     </div>
   );
 }

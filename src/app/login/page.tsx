@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { user, setUser } = useUser();
+  const { user, login } = useUser();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -19,7 +19,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setUser({
+    login({
       email: form.email,
       name: "Shivam Vishwakarma",
       id: "1",

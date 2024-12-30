@@ -1,3 +1,4 @@
+import OWCBtn from "@/app/explore/[domain]/[category]/[plan]/listCompany/component/OWCBtn";
 import { Company } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -63,7 +64,7 @@ export default async function CompanyCard({ company }: CompanyCardProps) {
               <LuMessageCircleMore className="group-hover:animate-bounce" />
             </Link>
             <Link
-              href={``}
+              href={`/company/${company.slug}`}
               className="flex justify-center items-center border-2 border-primary-dark px-1 font-semibold rounded-md group transition-all duration-300 text-white bg-primary-dark hover:bg-primary-light hover:text-primary-dark"
             >
               Profile
@@ -74,12 +75,7 @@ export default async function CompanyCard({ company }: CompanyCardProps) {
             >
               Place Order
             </Link>
-            <Link
-              href={``}
-              className="flex justify-center items-center border-2 border-primary-dark px-1 font-semibold rounded-md group transition-all duration-300 text-white bg-primary-dark hover:bg-primary-light hover:text-primary-dark"
-            >
-              Order With Customization
-            </Link>
+            <OWCBtn />
           </div>
         </div>
       </div>

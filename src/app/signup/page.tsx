@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 export default function SignupPage() {
   const router = useRouter();
-  const { user, setUser } = useUser();
+  const { user, login } = useUser();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -26,7 +26,7 @@ export default function SignupPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setUser({
+    login({
       email: form.email,
       name: form.name,
       id: "1",

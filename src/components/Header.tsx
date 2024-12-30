@@ -13,10 +13,10 @@ export default function Header() {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const pathname = usePathname();
 
-  const { user, setUser } = useUser();
+  const { user, logout } = useUser();
 
   const handleLogout = () => {
-    setUser(null);
+    logout();
   };
 
   const getClassNames: (path: string) => string = (path: string) => {
@@ -36,45 +36,6 @@ export default function Header() {
           <nav
             className={`justify-start items-center gap-6 flex fixed md:relative transition-all duration-300 shadow-lg md:shadow-none md:flex-row flex-col ${isOpen ? "top-20 bg-white" : "-top-full"} md:top-0 left-0 z-0 w-full`}
           >
-            <div className={getClassNames("/company")}>
-              <div className="justify-center items-center gap-2 flex">
-                <Link
-                  href={"/company"}
-                  className="text-base font-normal font-poppins"
-                >
-                  Company
-                </Link>
-              </div>
-              {/* <div className="w-4 h-4 relative opacity-80">
-                <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
-              </div> */}
-            </div>
-            <div className={getClassNames("/user")}>
-              <div className="justify-center items-center gap-2 flex">
-                <Link
-                  href={"/user"}
-                  className="text-base font-normal font-poppins"
-                >
-                  User
-                </Link>
-              </div>
-              {/* <div className="w-4 h-4 relative opacity-80">
-                <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
-              </div> */}
-            </div>
-            <div className={getClassNames("/milestone")}>
-              <div className="justify-center items-center gap-2 flex">
-                <Link
-                  href={"/milestone"}
-                  className="text-base font-normal font-poppins"
-                >
-                  Milestone
-                </Link>
-              </div>
-              {/* <div className="w-4 h-4 relative opacity-80">
-                <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
-              </div> */}
-            </div>
             <div className={getClassNames("/explore")}>
               <div className="justify-center items-center gap-2 flex">
                 <Link
@@ -82,6 +43,45 @@ export default function Header() {
                   className="text-base font-normal font-poppins"
                 >
                   Explore Projects
+                </Link>
+              </div>
+              {/* <div className="w-4 h-4 relative opacity-80">
+                <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
+              </div> */}
+            </div>
+            <div className={getClassNames("/company")}>
+              <div className="justify-center items-center gap-2 flex">
+                <Link
+                  href={"/company"}
+                  className="text-base font-normal font-poppins"
+                >
+                  Explore Companies
+                </Link>
+              </div>
+              {/* <div className="w-4 h-4 relative opacity-80">
+                <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
+              </div> */}
+            </div>
+            <div className={getClassNames("/support")}>
+              <div className="justify-center items-center gap-2 flex">
+                <Link
+                  href={"/support"}
+                  className="text-base font-normal font-poppins"
+                >
+                  Support
+                </Link>
+              </div>
+              {/* <div className="w-4 h-4 relative opacity-80">
+                <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
+              </div> */}
+            </div>
+            <div className={getClassNames("/about")}>
+              <div className="justify-center items-center gap-2 flex">
+                <Link
+                  href={"/about"}
+                  className="text-base font-normal font-poppins"
+                >
+                  About
                 </Link>
               </div>
               {/* <div className="w-4 h-4 relative opacity-80">
@@ -189,7 +189,7 @@ export default function Header() {
                       <p className="text-xs">{user.email}</p>
                     </div>
                     <Divider />
-                    <Link href={"/"} className="text-sm">
+                    <Link href={"/user"} className="text-sm">
                       Profile
                     </Link>
                     <Link href={"/"} className="text-sm">
