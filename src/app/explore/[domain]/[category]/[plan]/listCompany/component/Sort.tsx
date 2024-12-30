@@ -1,10 +1,18 @@
 "use client";
 
-import { changeSearchParam } from "@/lib/utils/utilsClient";
 import Link from "next/link";
+import { usePathname, useSearchParams } from "next/navigation";
 import { MdOutlineSort } from "react-icons/md";
 
 export default function Sort() {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  const changeSearchParam = (key: string, value: string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set(key, value);
+    return `${pathname}?${params.toString()}`;
+  };
   return (
     <div className="group relative cursor-pointer hover:text-primary-dark border-2 bg-white border-primary-dark rounded-md">
       <div className="flex items-center justify-between px-2">
