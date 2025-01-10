@@ -12,7 +12,7 @@ import CreatableSelect from "react-select/creatable";
 
 export default function CompanyOnboardingPage() {
   const router = useRouter();
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
   const [locationOptions, setLocationOptions] = useState<City[]>();
   const [uspOptions, setUspOptions] = useState<Usp[]>();
   const [step1Data, setStep1Data] = useState({
