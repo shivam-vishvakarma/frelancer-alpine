@@ -32,13 +32,19 @@ export default function SignupPage() {
       id: "1",
       avatar: "https://avatars.githubusercontent.com/u/47269252?v=4",
     });
+    if (form.joinas === "client") {
+      router.push("/user");
+    }
+    if (form.joinas === "company") {
+      router.push("/onboarding/company");
+    }
   };
 
-  useEffect(() => {
-    if (user) {
-      router.push("/");
-    }
-  }, [user, router]);
+//   useEffect(() => {
+//     if (user) {
+//       router.push("/");
+//     }
+//   }, [user, router]);
 
   return (
     <div className="bg-bgMain text-black flex justify-center">

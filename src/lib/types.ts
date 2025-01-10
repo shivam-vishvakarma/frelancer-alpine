@@ -35,3 +35,23 @@ export type Company = {
   reviews: number;
   description: string;
 };
+
+export type City = {
+  value: string;
+  label: string;
+};
+
+export type Step2Data = {
+  yearOfIncorporation: string;
+  noOfOffices: string;
+  officeLocations: City[];
+  noOfEmployees: string;
+  companyTaxId: string;
+  companyUSP: Usp[];
+  aboutCompany: string;
+};
+
+export type Usp = {
+  value: string;
+  label: string;
+};

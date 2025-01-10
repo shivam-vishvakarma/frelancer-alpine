@@ -1,6 +1,6 @@
 "use server";
 
-import { Category, Company, Domain, Stats } from "../types";
+import { Category, City, Company, Domain, Stats, Usp } from "../types";
 
 export async function getCategories() {
   console.log("getCategories");
@@ -651,4 +651,228 @@ export async function getCompaniesByTechStack() {
     },
   ];
   return companies;
+}
+
+export async function getLocations() {
+  const locations: City[] = [
+    {
+      value: "Mumbai",
+      label: "Mumbai",
+    },
+    {
+      value: "Pune",
+      label: "Pune",
+    },
+    {
+      value: "Nagpur",
+      label: "Nagpur",
+    },
+    {
+      value: "Nashik",
+      label: "Nashik",
+    },
+    {
+      value: "Aurangabad",
+      label: "Aurangabad",
+    },
+    {
+      value: "Thane",
+      label: "Thane",
+    },
+    {
+      value: "Solapur",
+      label: "Solapur",
+    },
+    {
+      value: "Kolhapur",
+      label: "Kolhapur",
+    },
+    {
+      value: "Amravati",
+      label: "Amravati",
+    },
+    {
+      value: "Akola",
+      label: "Akola",
+    },
+    {
+      value: "Ahmednagar",
+      label: "Ahmednagar",
+    },
+    {
+      value: "Chandrapur",
+      label: "Chandrapur",
+    },
+    {
+      value: "Jalgaon",
+      label: "Jalgaon",
+    },
+    {
+      value: "Latur",
+      label: "Latur",
+    },
+    {
+      value: "Kalyan-Dombivali",
+      label: "Kalyan-Dombivali",
+    },
+    {
+      value: "Vasai-Virar",
+      label: "Vasai-Virar",
+    },
+    {
+      value: "Nanded",
+      label: "Nanded",
+    },
+    {
+      value: "Panvel",
+      label: "Panvel",
+    },
+    {
+      value: "Malegaon",
+      label: "Malegaon",
+    },
+    {
+      value: "Bhiwandi",
+      label: "Bhiwandi",
+    },
+    {
+      value: "Parbhani",
+      label: "Parbhani",
+    },
+    {
+      value: "Ichalkaranji",
+      label: "Ichalkaranji",
+    },
+    {
+      value: "Ambernath",
+      label: "Ambernath",
+    },
+    {
+      value: "Jalna",
+      label: "Jalna",
+    },
+    {
+      value: "Bhusawal",
+      label: "Bhusawal",
+    },
+    {
+      value: "Navi Mumbai",
+      label: "Navi Mumbai",
+    },
+    {
+      value: "Beed",
+      label: "Beed",
+    },
+    {
+      value: "Osmanabad",
+      label: "Osmanabad",
+    },
+    {
+      value: "Wardha",
+      label: "Wardha",
+    },
+    {
+      value: "Ulhasnagar",
+      label: "Ulhasnagar",
+    },
+    {
+      value: "Yavatmal",
+      label: "Yavatmal",
+    },
+    {
+      value: "Satara",
+      label: "Satara",
+    },
+    {
+      value: "Achalpur",
+      label: "Achalpur",
+    },
+    {
+      value: "Dhule",
+      label: "Dhule",
+    },
+    {
+      value: "Raigad",
+      label: "Raigad",
+    },
+    {
+      value: "Chandrapur",
+      label: "Chandrapur",
+    },
+    {
+      value: "Washim",
+      label: "Washim",
+    },
+    {
+      value: "Hingoli",
+      label: "Hingoli",
+    },
+    {
+      value: "Gondia",
+      label: "Gondia",
+    },
+    {
+      value: "Parli",
+      label: "Parli",
+    },
+    {
+      value: "Wani",
+      label: "Wani",
+    },
+    {
+      value: "Murtizapur",
+      label: "Murtizapur",
+    },
+    {
+      value: "Sangli",
+      label: "Sangli",
+    },
+  ];
+  return locations;
+}
+
+export async function getCommonUsp() {
+  const usps: Usp[] = [
+    {
+      value: "Quality",
+      label: "Quality",
+    },
+    {
+      value: "Experience",
+      label: "Experience",
+    },
+    {
+      value: "Innovation",
+      label: "Innovation",
+    },
+    {
+      value: "Reliability",
+      label: "Reliability",
+    },
+    {
+      value: "Affordability",
+      label: "Affordability",
+    },
+    {
+      value: "Transparency",
+      label: "Transparency",
+    },
+    {
+      value: "Customer Satisfaction",
+      label: "Customer Satisfaction",
+    },
+    {
+      value: "Support",
+      label: "Support",
+    },
+    {
+      value: "Flexibility",
+      label: "Flexibility",
+    },
+    {
+      value: "Scalability",
+      label: "Scalability",
+    },
+  ];
+  return usps;
 }

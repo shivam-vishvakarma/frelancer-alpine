@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "@tanstack/react-query": "^5.62.8",
     "next": "15.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.4.0"
+    "react-icons": "^5.4.0",
+    "react-select": "^5.9.0"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
