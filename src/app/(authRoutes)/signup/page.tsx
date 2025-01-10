@@ -4,11 +4,11 @@ import { useUser } from "@/hooks/context/userContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function SignupPage() {
   const router = useRouter();
-  const { user, login } = useUser();
+  const { login } = useUser();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -40,11 +40,11 @@ export default function SignupPage() {
     }
   };
 
-//   useEffect(() => {
-//     if (user) {
-//       router.push("/");
-//     }
-//   }, [user, router]);
+  //   useEffect(() => {
+  //     if (user) {
+  //       router.push("/");
+  //     }
+  //   }, [user, router]);
 
   return (
     <div className="bg-bgMain text-black flex justify-center">

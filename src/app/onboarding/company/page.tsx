@@ -7,7 +7,7 @@ import {
 import { City, Step2Data, Usp } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Select, { CSSObjectWithLabel, MultiValue } from "react-select";
+import Select, { MultiValue } from "react-select";
 import CreatableSelect from "react-select/creatable";
 
 export default function CompanyOnboardingPage() {
@@ -15,7 +15,6 @@ export default function CompanyOnboardingPage() {
   const [currentStep, setCurrentStep] = useState(2);
   const [locationOptions, setLocationOptions] = useState<City[]>();
   const [uspOptions, setUspOptions] = useState<Usp[]>();
-  const [query, setQuery] = useState("");
   const [step1Data, setStep1Data] = useState({
     companyName: "",
     companyWebsite: "",
@@ -32,18 +31,18 @@ export default function CompanyOnboardingPage() {
     companyUSP: [],
     aboutCompany: "",
   });
-  const [step3Data, setStep3Data] = useState({
-    revenue: "",
-    profitLoss: "",
-    balanceSheet: "",
-    companyRegistrationCertificate: "",
-    companyPANCard: "",
-    companyGSTCertificate: "",
-  });
-  const [step4Data, setStep4Data] = useState({
-    companyCredentials: "",
-    companyAwards: "",
-  });
+  //   const [step3Data, setStep3Data] = useState({
+  //     revenue: "",
+  //     profitLoss: "",
+  //     balanceSheet: "",
+  //     companyRegistrationCertificate: "",
+  //     companyPANCard: "",
+  //     companyGSTCertificate: "",
+  //   });
+  //   const [step4Data, setStep4Data] = useState({
+  //     companyCredentials: "",
+  //     companyAwards: "",
+  //   });
 
   const handleStep1Change = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStep1Data((prev) => ({
@@ -59,23 +58,19 @@ export default function CompanyOnboardingPage() {
     }));
   };
 
-  const handleStep3Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStep3Data((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  //   const handleStep3Change = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     setStep3Data((prev) => ({
+  //       ...prev,
+  //       [e.target.name]: e.target.value,
+  //     }));
+  //   };
 
-  const handleStep4Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStep4Data((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  const handleAddUsp = () => {};
-
-  const handleRemoveUsp = () => {};
+  //   const handleStep4Change = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     setStep4Data((prev) => ({
+  //       ...prev,
+  //       [e.target.name]: e.target.value,
+  //     }));
+  //   };
 
   const handleNext = () => {
     setCurrentStep((prev) => prev + 1);
@@ -441,31 +436,31 @@ export default function CompanyOnboardingPage() {
   );
 }
 
-function LocationChip({
-  location,
-  onDel,
-}: {
-  location: string;
-  onDel: () => void;
-}) {
-  return (
-    <div className="inline-flex items-center justify-between space-x-1 bg-green-100 text-green-800 px-2 py-0.5 rounded-md text-sm">
-      <svg
-        onClick={onDel}
-        className="cursor-pointer h-4 w-4 text-green-900"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
-      <div className="select-none">{location}</div>
-    </div>
-  );
-}
+// function LocationChip({
+//   location,
+//   onDel,
+// }: {
+//   location: string;
+//   onDel: () => void;
+// }) {
+//   return (
+//     <div className="inline-flex items-center justify-between space-x-1 bg-green-100 text-green-800 px-2 py-0.5 rounded-md text-sm">
+//       <svg
+//         onClick={onDel}
+//         className="cursor-pointer h-4 w-4 text-green-900"
+//         xmlns="http://www.w3.org/2000/svg"
+//         fill="none"
+//         viewBox="0 0 24 24"
+//         stroke="currentColor"
+//       >
+//         <path
+//           strokeLinecap="round"
+//           strokeLinejoin="round"
+//           strokeWidth={2}
+//           d="M6 18L18 6M6 6l12 12"
+//         />
+//       </svg>
+//       <div className="select-none">{location}</div>
+//     </div>
+//   );
+// }
