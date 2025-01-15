@@ -7,6 +7,6 @@ export default function OpenModal() {
   const { openModal } = useModal();
   useEffect(() => {
     openModal();
-  }, [openModal]);
+  }, []);
   return null;
 }
