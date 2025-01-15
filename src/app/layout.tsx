@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Provider from "@/hooks/context/provider";
+import Modal from "@/components/Modal";
 
 export const metadata: Metadata = {
   title: "My Site",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Provider>{children}</Provider>
+        <Provider>
+          {children}
+          <Modal />
+        </Provider>
       </body>
     </html>
   );
