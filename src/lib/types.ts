@@ -41,7 +41,7 @@ export type City = {
   label: string;
 };
 
-export type Step2Data = {
+export type OfficeAndEmployeeData = {
   yearOfIncorporation: string;
   noOfOffices: string;
   officeLocations: City[];

@@ -8,7 +8,11 @@ import NotificationCard from "./NotifictionCard";
 import { useUser } from "@/hooks/context/userContext";
 import { usePathname } from "next/navigation";
 
-export default function Header() {
+export default function Header({
+  isOnDashboard = false,
+}: {
+  isOnDashboard?: boolean;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const pathname = usePathname();
@@ -27,12 +31,14 @@ export default function Header() {
     <header className="bg-white shadow sticky z-10 top-0">
       <div className="w-full max-w-screen-xl mx-auto px-10 py-5 justify-between items-center flex">
         <div className="justify-start items-center gap-10 flex">
-          <Link
-            href={"/"}
-            className="text-primary-dark text-2xl font-semibold font-poppins"
-          >
-            LOGO
-          </Link>
+          {!isOnDashboard && (
+            <Link
+              href={"/"}
+              className="text-primary-dark text-2xl font-semibold font-poppins"
+            >
+              LOGO
+            </Link>
+          )}
           <nav
             className={`justify-start items-center gap-6 flex fixed md:relative transition-all duration-300 shadow-lg md:shadow-none md:flex-row flex-col ${isOpen ? "top-20 bg-white" : "-top-full"} md:top-0 left-0 z-0 w-full`}
           >
@@ -49,19 +55,21 @@ export default function Header() {
                 <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
               </div> */}
             </div>
-            <div className={getClassNames("/company")}>
-              <div className="justify-center items-center gap-2 flex">
-                <Link
-                  href={"/company"}
-                  className="text-base font-normal font-poppins"
-                >
-                  Explore Companies
-                </Link>
-              </div>
-              {/* <div className="w-4 h-4 relative opacity-80">
+            {!isOnDashboard && (
+              <div className={getClassNames("/company")}>
+                <div className="justify-center items-center gap-2 flex">
+                  <Link
+                    href={"/company"}
+                    className="text-base font-normal font-poppins"
+                  >
+                    Explore Companies
+                  </Link>
+                </div>
+                {/* <div className="w-4 h-4 relative opacity-80">
                 <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
               </div> */}
-            </div>
+              </div>
+            )}
             <div className={getClassNames("/support")}>
               <div className="justify-center items-center gap-2 flex">
                 <Link
@@ -75,19 +83,21 @@ export default function Header() {
                 <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
               </div> */}
             </div>
-            <div className={getClassNames("/about")}>
-              <div className="justify-center items-center gap-2 flex">
-                <Link
-                  href={"/about"}
-                  className="text-base font-normal font-poppins"
-                >
-                  About
-                </Link>
-              </div>
-              {/* <div className="w-4 h-4 relative opacity-80">
+            {!isOnDashboard && (
+              <div className={getClassNames("/about")}>
+                <div className="justify-center items-center gap-2 flex">
+                  <Link
+                    href={"/about"}
+                    className="text-base font-normal font-poppins"
+                  >
+                    About
+                  </Link>
+                </div>
+                {/* <div className="w-4 h-4 relative opacity-80">
                 <Image src={"/arrow-icon.svg"} alt={"arrow-icon"} height={50} width={50} className="w-full h-full object-cover"  />
               </div> */}
-            </div>
+              </div>
+            )}
           </nav>
         </div>
         <div className="justify-start items-center gap-2 flex">
@@ -192,8 +202,8 @@ export default function Header() {
                     <Link href={"/user"} className="text-sm">
                       Profile
                     </Link>
-                    <Link href={"/"} className="text-sm">
-                      Settings
+                    <Link href={"/dashboard"} className="text-sm">
+                      Dashboard
                     </Link>
                     <Divider />
                     <button

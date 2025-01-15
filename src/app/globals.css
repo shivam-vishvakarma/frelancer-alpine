@@ -19,3 +19,32 @@ input:checked + label {
     @apply bg-primary-dark text-white rounded py-2 px-4;
   }
 }
+
+/* scrollbar styling */
+::-webkit-scrollbar-track {
+  @apply bg-primary-light;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-dark;
+  border-radius: 10px;
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  display: block;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 5px;
+}
+
+::-webkit-scrollbar:vertical {
+  width: 5px;
+}

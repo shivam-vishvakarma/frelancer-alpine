@@ -1,10 +1,11 @@
 "use client";
 
+import FileInput from "@/components/FileInput";
 import {
   getCommonUsp,
   getLocations,
 } from "@/lib/serverActions/dataFetchingActions";
-import { City, Step2Data, Usp } from "@/lib/types";
+import { City, OfficeAndEmployeeData, Usp } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Select, { MultiValue } from "react-select";
@@ -15,22 +16,24 @@ export default function CompanyOnboardingPage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [locationOptions, setLocationOptions] = useState<City[]>();
   const [uspOptions, setUspOptions] = useState<Usp[]>();
-  const [step1Data, setStep1Data] = useState({
+  const [companyInfoData, setCompanyInfoData] = useState({
     companyName: "",
     companyWebsite: "",
     primaryContactName: "",
     primaryContactNumber: "",
     companyEmail: "",
   });
-  const [step2Data, setStep2Data] = useState<Step2Data>({
-    yearOfIncorporation: "",
-    noOfOffices: "",
-    officeLocations: [],
-    noOfEmployees: "",
-    companyTaxId: "",
-    companyUSP: [],
-    aboutCompany: "",
-  });
+  const [officeAndEmployeeData, setOfficeAndEmployeeData] =
+    useState<OfficeAndEmployeeData>({
+      yearOfIncorporation: "",
+      noOfOffices: "",
+      officeLocations: [],
+      noOfEmployees: "",
+      companyTaxId: "",
+      companyUSP: [],
+      aboutCompany: "",
+    });
+
   //   const [step3Data, setStep3Data] = useState({
   //     revenue: "",
   //     profitLoss: "",
@@ -44,15 +47,17 @@ export default function CompanyOnboardingPage() {
   //     companyAwards: "",
   //   });
 
-  const handleStep1Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStep1Data((prev) => ({
+  const handleCompanyInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCompanyInfoData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const handleStep2Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setStep2Data((prev) => ({
+  const handleOfficeAndEmployeeChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setOfficeAndEmployeeData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -81,7 +86,7 @@ export default function CompanyOnboardingPage() {
   };
 
   const handleSave = () => {
-    router.push(`/company/abccompany`);
+    router.push(`/dashboard`);
   };
 
   useEffect(() => {
@@ -92,9 +97,10 @@ export default function CompanyOnboardingPage() {
       setUspOptions(usps);
     });
   }, []);
+
   return (
     <main className="bg-bgMain">
-      <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center gap-8">
+      <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center py-10 gap-8">
         <h3 className="text-5xl font-semibold text-primary-dark font-rokkitt">
           Create Company Profile
         </h3>
@@ -120,7 +126,7 @@ export default function CompanyOnboardingPage() {
                 2
               </div>
               <span className="ml-2 text-gray-700 text-sm md:text-base">
-                Office And Employees
+                Portfolio
               </span>
             </div>
             <div className="flex items-center">
@@ -131,7 +137,7 @@ export default function CompanyOnboardingPage() {
                 3
               </div>
               <span className="ml-2 text-gray-700 text-sm md:text-base">
-                Upload Documents
+                Office And Employees
               </span>
             </div>
             <div className="flex items-center">
@@ -142,6 +148,17 @@ export default function CompanyOnboardingPage() {
                 4
               </div>
               <span className="ml-2 text-gray-700 text-sm md:text-base">
+                Upload Documents
+              </span>
+            </div>
+            <div className="flex items-center">
+              <div
+                id="step5"
+                className={`w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full text-sm md:text-base ${currentStep >= 5 ? "bg-primary-dark text-white" : "bg-gray-300 text-gray-500"}`}
+              >
+                5
+              </div>
+              <span className="ml-2 text-gray-700 text-sm md:text-base">
                 Credentials & Awards
               </span>
             </div>
@@ -150,6 +167,7 @@ export default function CompanyOnboardingPage() {
 
         {/* Step Content */}
         <div className="w-full max-w-md md:max-w-5xl p-6 md:p-10 bg-white rounded-lg shadow-lg">
+          {/* company info */}
           {currentStep === 1 && (
             <div>
               <h2 className="text-lg md:text-2xl font-semibold mb-4">
@@ -163,8 +181,8 @@ export default function CompanyOnboardingPage() {
                   <input
                     type="text"
                     name="companyName"
-                    value={step1Data.companyName}
-                    onChange={handleStep1Change}
+                    value={companyInfoData.companyName}
+                    onChange={handleCompanyInfoChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
                     placeholder="Company Name Inc."
                   />
@@ -176,8 +194,8 @@ export default function CompanyOnboardingPage() {
                   <input
                     type="text"
                     name="companyWebsite"
-                    value={step1Data.companyWebsite}
-                    onChange={handleStep1Change}
+                    value={companyInfoData.companyWebsite}
+                    onChange={handleCompanyInfoChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
                     placeholder="https://companyname.com"
                   />
@@ -189,8 +207,8 @@ export default function CompanyOnboardingPage() {
                   <input
                     type="text"
                     name="primaryContactName"
-                    value={step1Data.primaryContactName}
-                    onChange={handleStep1Change}
+                    value={companyInfoData.primaryContactName}
+                    onChange={handleCompanyInfoChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
                     placeholder="Aman Singh"
                   />
@@ -202,8 +220,8 @@ export default function CompanyOnboardingPage() {
                   <input
                     type="text"
                     name="primaryContactNumber"
-                    value={step1Data.primaryContactNumber}
-                    onChange={handleStep1Change}
+                    value={companyInfoData.primaryContactNumber}
+                    onChange={handleCompanyInfoChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
                     placeholder="+91 9876543210"
                   />
@@ -215,8 +233,8 @@ export default function CompanyOnboardingPage() {
                   <input
                     type="email"
                     name="companyEmail"
-                    value={step1Data.companyEmail}
-                    onChange={handleStep1Change}
+                    value={companyInfoData.companyEmail}
+                    onChange={handleCompanyInfoChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
                     placeholder="name@company.com"
                   />
@@ -224,7 +242,34 @@ export default function CompanyOnboardingPage() {
               </form>
             </div>
           )}
+          {/* portfolio */}
           {currentStep === 2 && (
+            <div>
+              <h2 className="text-lg md:text-2xl font-semibold mb-4">
+                Portfolio
+              </h2>
+              <form id="formStep1" className="grid grid-cols-12 gap-5">
+                <div className="col-span-6 space-y-2">
+                  <h2 className="block text-gray-700 text-xl">Company Logo</h2>
+                  <FileInput />
+                </div>
+                <div className="col-span-6 space-y-2">
+                  <h2 className="block text-gray-700 text-xl">
+                    Company Banner
+                  </h2>
+                  <FileInput />
+                </div>
+                <div className="col-span-12 space-y-2">
+                  <h2 className="block text-gray-700 text-xl">
+                    Portfolio Images
+                  </h2>
+                  <FileInput />
+                </div>
+              </form>
+            </div>
+          )}
+          {/* office and employee */}
+          {currentStep === 3 && (
             <div>
               <h2 className="text-lg md:text-2xl font-semibold mb-4">
                 Office And Employees
@@ -237,8 +282,8 @@ export default function CompanyOnboardingPage() {
                   <input
                     type="text"
                     name="yearOfIncorporation"
-                    value={step2Data.yearOfIncorporation}
-                    onChange={handleStep2Change}
+                    value={officeAndEmployeeData.yearOfIncorporation}
+                    onChange={handleOfficeAndEmployeeChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
                     placeholder="2020"
                   />
@@ -250,8 +295,8 @@ export default function CompanyOnboardingPage() {
                   <input
                     type="text"
                     name="noOfOffices"
-                    value={step2Data.noOfOffices}
-                    onChange={handleStep2Change}
+                    value={officeAndEmployeeData.noOfOffices}
+                    onChange={handleOfficeAndEmployeeChange}
                     className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
                     placeholder="1"
                   />
@@ -263,9 +308,9 @@ export default function CompanyOnboardingPage() {
                   <Select
                     options={locationOptions}
                     name="officeLocations"
-                    value={step2Data.officeLocations}
+                    value={officeAndEmployeeData.officeLocations}
                     onChange={(selected: MultiValue<City>) => {
-                      setStep2Data((prev) => ({
+                      setOfficeAndEmployeeData((prev) => ({
                         ...prev,
                         officeLocations: selected as City[],
                       }));
@@ -299,9 +344,9 @@ export default function CompanyOnboardingPage() {
                   </label>
                   <CreatableSelect
                     isMulti
-                    value={step2Data.companyUSP}
+                    value={officeAndEmployeeData.companyUSP}
                     onChange={(selected: MultiValue<Usp>) => {
-                      setStep2Data((prev) => ({
+                      setOfficeAndEmployeeData((prev) => ({
                         ...prev,
                         companyUSP: selected as Usp[],
                       }));
@@ -322,94 +367,64 @@ export default function CompanyOnboardingPage() {
               </form>
             </div>
           )}
-          {currentStep === 3 && (
+          {/* upload document */}
+          {currentStep === 4 && (
             <div>
               <h2 className="text-lg md:text-2xl font-semibold mb-4">
                 Upload Documents
               </h2>
               <form id="formStep3" className="grid grid-cols-12 gap-5">
                 <div className="col-span-6 space-y-2">
-                  <label className="block text-gray-700 text-sm md:text-base">
-                    Revenue
-                  </label>
-                  <input
-                    type="file"
-                    className="block text-sm file:mr-4 file:rounded-md file:border-0 file:bg-primary-dark file:py-2 file:px-2 file:text-sm file:font-semibold file:text-white hover:file:bg-green-600 disabled:pointer-events-none disabled:opacity-60 w-full px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
-                  />
+                  <h2 className="block text-gray-700 text-xl">Revenue</h2>
+                  <FileInput />
                 </div>
                 <div className="col-span-6 space-y-2">
-                  <label className="block text-gray-700 text-sm md:text-base">
-                    Profit/Loss
-                  </label>
-                  <input
-                    type="file"
-                    className="block text-sm file:mr-4 file:rounded-md file:border-0 file:bg-primary-dark file:py-2 file:px-2 file:text-sm file:font-semibold file:text-white hover:file:bg-green-600 disabled:pointer-events-none disabled:opacity-60 w-full px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
-                  />
+                  <h2 className="block text-gray-700 text-xl">Profit & Loss</h2>
+                  <FileInput />
                 </div>
                 <div className="col-span-6 space-y-2">
-                  <label className="block text-gray-700 text-sm md:text-base">
-                    Balance Sheet
-                  </label>
-                  <input
-                    type="file"
-                    className="block text-sm file:mr-4 file:rounded-md file:border-0 file:bg-primary-dark file:py-2 file:px-2 file:text-sm file:font-semibold file:text-white hover:file:bg-green-600 disabled:pointer-events-none disabled:opacity-60 w-full px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
-                  />
+                  <h2 className="block text-gray-700 text-xl">Balance Sheet</h2>
+                  <FileInput />
                 </div>
                 <div className="col-span-6 space-y-2">
-                  <label className="block text-gray-700 text-sm md:text-base">
+                  <h2 className="block text-gray-700 text-xl">
                     Company Registration Certificate
-                  </label>
-                  <input
-                    type="file"
-                    className="block text-sm file:mr-4 file:rounded-md file:border-0 file:bg-primary-dark file:py-2 file:px-2 file:text-sm file:font-semibold file:text-white hover:file:bg-green-600 disabled:pointer-events-none disabled:opacity-60 w-full px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
-                  />
+                  </h2>
+                  <FileInput />
                 </div>
                 <div className="col-span-6 space-y-2">
-                  <label className="block text-gray-700 text-sm md:text-base">
+                  <h2 className="block text-gray-700 text-xl">
                     Company PAN Card
-                  </label>
-                  <input
-                    type="file"
-                    className="block text-sm file:mr-4 file:rounded-md file:border-0 file:bg-primary-dark file:py-2 file:px-2 file:text-sm file:font-semibold file:text-white hover:file:bg-green-600 disabled:pointer-events-none disabled:opacity-60 w-full px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
-                  />
+                  </h2>
+                  <FileInput />
                 </div>
                 <div className="col-span-6 space-y-2">
-                  <label className="block text-gray-700 text-sm md:text-base">
+                  <h2 className="block text-gray-700 text-xl">
                     Company GST Certificate
-                  </label>
-                  <input
-                    type="file"
-                    className="block text-sm file:mr-4 file:rounded-md file:border-0 file:bg-primary-dark file:py-2 file:px-2 file:text-sm file:font-semibold file:text-white hover:file:bg-green-600 disabled:pointer-events-none disabled:opacity-60 w-full px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
-                  />
+                  </h2>
+                  <FileInput />
                 </div>
               </form>
             </div>
           )}
-          {currentStep === 4 && (
+          {/* credentials and awards */}
+          {currentStep === 5 && (
             <div>
               <h2 className="text-lg md:text-2xl font-semibold mb-4">
                 Credentials & Awards
               </h2>
               <form id="formStep4" className="grid grid-cols-12 gap-5">
                 <div className="col-span-6 space-y-2">
-                  <label className="block text-gray-700 text-sm md:text-base">
+                  <h2 className="block text-gray-700 text-xl">
                     Company Credentials
-                  </label>
-                  <input
-                    type="file"
-                    multiple
-                    className="block text-sm file:mr-4 file:rounded-md file:border-0 file:bg-primary-dark file:py-2 file:px-2 file:text-sm file:font-semibold file:text-white hover:file:bg-green-600 disabled:pointer-events-none disabled:opacity-60 w-full px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
-                  />
+                  </h2>
+                  <FileInput />
                 </div>
                 <div className="col-span-6 space-y-2">
-                  <label className="block text-gray-700 text-sm md:text-base">
+                  <h2 className="block text-gray-700 text-xl">
                     Company Awards
-                  </label>
-                  <input
-                    type="file"
-                    multiple
-                    className="block text-sm file:mr-4 file:rounded-md file:border-0 file:bg-primary-dark file:py-2 file:px-2 file:text-sm file:font-semibold file:text-white hover:file:bg-green-600 disabled:pointer-events-none disabled:opacity-60 w-full px-3 py-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary-dark"
-                  />
+                  </h2>
+                  <FileInput />
                 </div>
               </form>
             </div>
@@ -425,9 +440,9 @@ export default function CompanyOnboardingPage() {
             </button>
             <button
               className="px-4 py-2 bg-primary-dark text-white rounded transition duration-300 hover:bg-primary-dark"
-              onClick={currentStep === 4 ? handleSave : handleNext}
+              onClick={currentStep === 5 ? handleSave : handleNext}
             >
-              {currentStep === 4 ? "Submit" : "Next"}
+              {currentStep === 5 ? "Submit" : "Next"}
             </button>
           </div>
         </div>
