@@ -27,7 +27,7 @@ export default async function PlansPage({
   return (
     <section className="relative">
       <div className="max-w-screen-xl mx-auto hidden sm:block">
-        <BreadCrum breads={[selectedDomain, selectedCategory]} />
+        <BreadCrum breads={[selectedDomain, selectedCategory]} base="explore" />
       </div>
       <h3 className="text-center text-4xl font-semibold py-5 text-primary-dark">
         Select Plan

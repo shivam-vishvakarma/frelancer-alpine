@@ -259,11 +259,29 @@ export default function CompanyOnboardingPage() {
                   </h2>
                   <FileInput />
                 </div>
-                <div className="col-span-12 space-y-2">
+                <div className="col-span-6 space-y-2">
                   <h2 className="block text-gray-700 text-xl">
                     Portfolio Images
                   </h2>
                   <FileInput />
+                </div>
+                <div className="col-span-6 space-y-2">
+                  <h2 className="block text-gray-700 text-xl">
+                    Portfolio Video
+                  </h2>
+                  <FileInput />
+                </div>
+                <div className="col-span-12 space-y-2">
+                  <h2 className="block text-gray-700 text-xl">Company USP&apos;s</h2>
+                  <textarea
+                    name="input"
+                    id="input"
+                    rows={5}
+                    maxLength={256}
+                    required
+                    placeholder="Write about your company usp's..."
+                    className="rounded-lg p-4 bg-black/5 border border-solid focus:ring-0 focus:border-primary-dark border-primary-dark font-mono font-medium text-sm w-4/5"
+                  ></textarea>
                 </div>
               </form>
             </div>

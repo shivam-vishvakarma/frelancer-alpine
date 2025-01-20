@@ -44,7 +44,10 @@ export default async function TechnologyPage({
   return (
     <div>
       <div className="max-w-screen-xl mx-auto hidden sm:block">
-        <BreadCrum breads={[selectedDomain, selectedCategory, selectedPlan]} />
+        <BreadCrum
+          breads={[selectedDomain, selectedCategory, selectedPlan]}
+          base="explore"
+        />
       </div>
       {selectedTech && <ScrollHere target={selectedTech} />}
       <h3 className="text-center text-4xl font-semibold py-5 text-primary-dark">

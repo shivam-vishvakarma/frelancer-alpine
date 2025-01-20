@@ -207,7 +207,7 @@ export default function SideBar() {
               Specialisation Management
             </li>
             <li className="px-4 cursor-pointer hover:bg-primary-dark hover:text-white">
-              <Link className="py-3 flex items-center" href="/">
+              <Link className="py-3 flex items-center" href="/dashboard/specialization">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

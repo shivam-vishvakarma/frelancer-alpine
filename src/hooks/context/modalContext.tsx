@@ -2,9 +2,11 @@
 
 import { createContext, useContext, useState } from "react";
 
-type ModalContextType = {
+export type ModalContextType = {
   isOpen: boolean;
-  openModal: () => void;
+  variant: "profileCompletion" | "planForm";
+  isClosable: boolean;
+  openModal: (variant: "profileCompletion" | "planForm") => void;
   closeModal: () => void;
 };
 
@@ -16,9 +18,17 @@ export default function ModalProvider({
   children: React.ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [variant, setVariant] =
+    useState<ModalContextType["variant"]>("profileCompletion");
+  const [isClosable, setIsClosable] = useState(true);
 
-  function openModal() {
+  function openModal(variant: ModalContextType["variant"], closable = true) {
     setIsOpen(true);
+    if (variant) {
+      setVariant(variant);
+      closable = false;
+    }
+    setIsClosable(closable);
   }
 
   function closeModal() {
@@ -30,6 +40,8 @@ export default function ModalProvider({
       value={{
         isOpen,
         openModal,
+        isClosable,
+        variant,
         closeModal,
       }}
     >

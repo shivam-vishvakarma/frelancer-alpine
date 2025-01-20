@@ -3,15 +3,16 @@ import Link from "next/link";
 
 interface BreadCrumProps {
   breads: bread[];
+  base?: string;
 }
 
-export default async function BreadCrum({ breads }: BreadCrumProps) {
+export default async function BreadCrum({ base, breads }: BreadCrumProps) {
   return (
     <nav className="flex mt-2">
       <ol className="flex flex-wrap text-xl">
         <li className="inline-flex items-center">
           <Link
-            href="/"
+            href={`/${base}`}
             className="inline-flex items-center font-medium text-primary-dark hover:text-black transition-all duration-300"
           >
             <svg
@@ -41,7 +42,7 @@ export default async function BreadCrum({ breads }: BreadCrumProps) {
                   ></path>
                 </svg>
                 <Link
-                  href={`/explore/${p.slug}`}
+                  href={`/${base}/${p.slug}`}
                   className="flex font-medium text-primary-dark hover:text-black transition-all duration-300 relative hover:after:w-full after:w-0 after:h-0.5 after:absolute after:-bottom-1 after:left-0 after:bg-primary-dark after:transition-all after:duration-300  after:rounded-full after:z-10"
                 >
                   {p.name}

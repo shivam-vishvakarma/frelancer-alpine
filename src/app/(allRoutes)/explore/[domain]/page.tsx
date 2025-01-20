@@ -20,15 +20,8 @@ export default async function CategoryPage({
 
   return (
     <section className="relative">
-      {/* <Image
-        src={"/domains_bg_img.png"}
-        width={1920}
-        height={1080}
-        alt=""
-        className="w-full h-full object-cover absolute inset-0 -z-10"
-      /> */}
       <div className="max-w-screen-xl mx-auto hidden sm:block">
-        <BreadCrum breads={[selectedDomain]} />
+        <BreadCrum breads={[selectedDomain]} base="explore" />
       </div>
       <h3 className="text-center text-4xl font-semibold py-5 text-primary-dark">
         Project Categories

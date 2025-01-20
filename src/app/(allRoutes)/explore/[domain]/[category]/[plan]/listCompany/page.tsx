@@ -57,6 +57,7 @@ export default async function CompanyPage({
       <div className="max-w-screen-xl mx-auto hidden sm:block">
         <BreadCrum
           breads={[selectedDomain, selectedCategory, selectedPlan, techStack]}
+            base="explore"
         />
       </div>
       {selectedTech && <ScrollHere target={selectedTech} />}
