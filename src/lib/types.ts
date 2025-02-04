@@ -21,7 +21,8 @@ export type User = {
 
 export type bread = {
   name: string;
-  slug: string;
+  slug?: string;
+  query?: string;
 };
 
 export type Company = {

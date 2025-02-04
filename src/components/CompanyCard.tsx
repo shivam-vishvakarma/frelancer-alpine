@@ -1,4 +1,4 @@
-import OWCBtn from "@/app/(allRoutes)/explore/[domain]/[category]/[plan]/listCompany/component/OWCBtn";
+import OWCBtn from "@/app/(allRoutes)/listCompany/component/OWCBtn";
 import { Company } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";

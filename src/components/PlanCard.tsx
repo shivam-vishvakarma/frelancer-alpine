@@ -3,12 +3,14 @@ import Divider from "./Divider";
 interface PlanCardProps {
   plan_name: string;
   plan_items: string[];
+  selected?: boolean;
   variant?: "user" | "company" | "admin";
 }
 
 export default async function PlansPage({
   plan_name,
   plan_items,
+  selected,
   variant = "user",
 }: PlanCardProps) {
   return (
@@ -33,7 +35,7 @@ export default async function PlansPage({
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
-              className="text-primary-dark w-6 h-6 hidden group-hover:block"
+              className={`text-primary-dark w-6 h-6 group-hover:block ${selected ? "block" : "hidden"}`}
               viewBox="0 0 24 24"
             >
               <path d="M9 5l7 7-7 7" />
@@ -43,9 +45,13 @@ export default async function PlansPage({
         <p className="text-base font-medium p-2 text-primary-dark leading-tight">
           For new makers who want to fine-tune and test an idea.
         </p>
-        <button className="block w-full group-hover:bg-primary-dark group-hover:text-white transition-all rounded-md py-2 font-bold text-primary-dark border-primary-dark border-2 text-center">
+        <button
+          className={`block w-full group-hover:bg-primary-dark group-hover:text-white transition-all rounded-md py-2 font-bold text-primary-dark border-primary-dark border-2 text-center ${selected && "bg-primary-dark text-white"}`}
+        >
           {variant === "user"
-            ? "Select Plan"
+            ? selected
+              ? "Selected"
+              : "Select Plan"
             : variant === "company"
               ? "Add Plan"
               : "Edit Plan"}

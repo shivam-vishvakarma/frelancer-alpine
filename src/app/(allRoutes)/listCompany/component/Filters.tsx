@@ -42,8 +42,12 @@ export default function Filters() {
   };
 
   const handleReset = () => {
-    const techStack = new URLSearchParams(window.location.search).get("tech");
-    router.push(`${pathname}?tech=${techStack?.toString()}`, { scroll: false });
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.delete("companyType");
+    searchParams.delete("companySize");
+    searchParams.delete("companyAge");
+    searchParams.delete("companyLocation");
+    router.push(`?${searchParams.toString()}`, { scroll: false });
     setFilters({
       companyType: "all",
       companySize: "all",
@@ -64,7 +68,7 @@ export default function Filters() {
 
   return (
     <div
-      className={`col-span-2 fixed top-1 z-10 md:z-0 bottom-1 border-2 md:border-none border-primary-dark rounded-md overflow-auto bg-white md:static transition-all duration-300 ${openFilters ? "left-1" : "-left-full"}`}
+      className={`col-span-3 fixed top-1 z-10 md:z-0 bottom-1 border-2 md:border-none border-primary-dark rounded-md overflow-auto bg-white md:static transition-all duration-300 ${openFilters ? "left-1" : "-left-full"}`}
     >
       <div className="md:border-2 border-primary-dark rounded-md p-2 xl:w-[90%] mx-auto space-y-1">
         <div className="flex justify-between items-center px-2">

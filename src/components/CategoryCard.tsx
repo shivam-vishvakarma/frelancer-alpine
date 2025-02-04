@@ -1,11 +1,16 @@
 type CategoryCardProps = {
   title: string;
+  selected?: boolean;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export default function CategoryCard({ title, ...props }: CategoryCardProps) {
+export default function CategoryCard({
+  title,
+  selected,
+  ...props
+}: CategoryCardProps) {
   return (
     <div
-      className="border border-primary-dark flex justify-center gap-5 items-center aspect-video max-w-screen-sm rounded-xl group hover:bg-primary-light transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+      className={`border border-primary-dark flex justify-center gap-5 items-center aspect-video max-w-screen-sm rounded-xl group hover:bg-primary-light transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer ${selected && "bg-primary-light shadow-lg -translate-y-1"}`}
       {...props}
     >
       <svg

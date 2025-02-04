@@ -6,7 +6,7 @@ export default function ScrollHere({ target }: { target: string }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [target]);
 
   return <div ref={ref} />;
