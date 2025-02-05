@@ -11,7 +11,6 @@ import { getTitleFromSlug } from "@/lib/utils/utils";
 import Link from "next/link";
 import Sort from "./component/Sort";
 import Filters from "./component/Filters";
-import SideInfo from "./component/SideInfo";
 import ToggleBtn from "./component/ToggleBtn";
 import Pagination from "@/components/Pagination";
 import OWCModal from "./component/OWCModal";
