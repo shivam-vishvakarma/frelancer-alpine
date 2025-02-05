@@ -33,6 +33,12 @@ export default function CompanyOnboardingPage() {
       companyUSP: [],
       aboutCompany: "",
     });
+  const [credentials, setCredentials] = useState([
+    { title: "", description: "", file: null },
+  ]);
+  const [awards, setAwards] = useState([
+    { title: "", description: "", file: null },
+  ]);
 
   //   const [step3Data, setStep3Data] = useState({
   //     revenue: "",
@@ -87,6 +93,27 @@ export default function CompanyOnboardingPage() {
 
   const handleSave = () => {
     router.push(`/dashboard`);
+  };
+
+  const handleAddCredential = () => {
+    setCredentials([
+      ...credentials,
+      { title: "", description: "", file: null },
+    ]);
+  };
+
+  const handleAddAward = () => {
+    setAwards([...awards, { title: "", description: "", file: null }]);
+  };
+
+  const handleRemoveCredential = (index: number) => {
+    const newCredentials = credentials.filter((_, i) => i !== index);
+    setCredentials(newCredentials);
+  };
+
+  const handleRemoveAward = (index: number) => {
+    const newAwards = awards.filter((_, i) => i !== index);
+    setAwards(newAwards);
   };
 
   useEffect(() => {
@@ -271,8 +298,30 @@ export default function CompanyOnboardingPage() {
                   </h2>
                   <FileInput />
                 </div>
-                <div className="col-span-12 space-y-2">
-                  <h2 className="block text-gray-700 text-xl">Company USP&apos;s</h2>
+                <div className="col-span-8 space-y-2 group">
+                  <label className="block text-gray-700 text-sm md:text-base">
+                    Company Unique Strength/ USP
+                  </label>
+                  <small className="hidden group-focus-within:block text-yellow-500">
+                    Choose From Dropdown or Add New
+                  </small>
+                  <CreatableSelect
+                    isMulti
+                    value={officeAndEmployeeData.companyUSP}
+                    maxMenuHeight={100}
+                    onChange={(selected: MultiValue<Usp>) => {
+                      setOfficeAndEmployeeData((prev) => ({
+                        ...prev,
+                        companyUSP: selected as Usp[],
+                      }));
+                    }}
+                    options={uspOptions}
+                  />
+                </div>
+                {/* <div className="col-span-12 space-y-2">
+                  <h2 className="block text-gray-700 text-xl">
+                    Company USP&apos;s
+                  </h2>
                   <textarea
                     name="input"
                     id="input"
@@ -282,7 +331,7 @@ export default function CompanyOnboardingPage() {
                     placeholder="Write about your company usp's..."
                     className="rounded-lg p-4 bg-black/5 border border-solid focus:ring-0 focus:border-primary-dark border-primary-dark font-mono font-medium text-sm w-4/5"
                   ></textarea>
-                </div>
+                </div> */}
               </form>
             </div>
           )}
@@ -356,22 +405,7 @@ export default function CompanyOnboardingPage() {
                     placeholder="GSTIN1234567890"
                   />
                 </div>
-                <div className="col-span-4 space-y-2">
-                  <label className="block text-gray-700 text-sm md:text-base">
-                    Company Unique Strength/ USP
-                  </label>
-                  <CreatableSelect
-                    isMulti
-                    value={officeAndEmployeeData.companyUSP}
-                    onChange={(selected: MultiValue<Usp>) => {
-                      setOfficeAndEmployeeData((prev) => ({
-                        ...prev,
-                        companyUSP: selected as Usp[],
-                      }));
-                    }}
-                    options={uspOptions}
-                  />
-                </div>
+
                 <div className="col-span-12 space-y-2">
                   <label className="block text-gray-700 text-sm md:text-base">
                     About Your Company
@@ -432,17 +466,154 @@ export default function CompanyOnboardingPage() {
                 Credentials & Awards
               </h2>
               <form id="formStep4" className="grid grid-cols-12 gap-5">
-                <div className="col-span-6 space-y-2">
+                <div className="col-span-12 space-y-2">
                   <h2 className="block text-gray-700 text-xl">
                     Company Credentials
                   </h2>
-                  <FileInput />
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Title
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Description
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          File
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Remove
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {credentials.map((credential, index) => (
+                        <tr key={index}>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <input
+                              type="text"
+                              className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-dark focus:border-primary-dark"
+                              placeholder="Title"
+                              value={credential.title}
+                              onChange={(e) => {
+                                const newCredentials = [...credentials];
+                                newCredentials[index].title = e.target.value;
+                                setCredentials(newCredentials);
+                              }}
+                            />
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <input
+                              type="text"
+                              className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-dark focus:border-primary-dark"
+                              placeholder="Description"
+                              value={credential.description}
+                              onChange={(e) => {
+                                const newCredentials = [...credentials];
+                                newCredentials[index].description =
+                                  e.target.value;
+                                setCredentials(newCredentials);
+                              }}
+                            />
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <FileInput />
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <button
+                              type="button"
+                              className="text-red-600 hover:text-red-900"
+                              onClick={() => handleRemoveCredential(index)}
+                            >
+                              Remove
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <button
+                    type="button"
+                    className="mt-2 px-4 py-2 bg-primary-dark text-white rounded"
+                    onClick={handleAddCredential}
+                  >
+                    Add Credential
+                  </button>
                 </div>
-                <div className="col-span-6 space-y-2">
+                <div className="col-span-12 space-y-2">
                   <h2 className="block text-gray-700 text-xl">
                     Company Awards
                   </h2>
-                  <FileInput />
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Title
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Description
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          File
+                        </th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Remove
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {awards.map((award, index) => (
+                        <tr key={index}>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <input
+                              type="text"
+                              className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-dark focus:border-primary-dark"
+                              placeholder="Title"
+                              value={award.title}
+                              onChange={(e) => {
+                                const newAwards = [...awards];
+                                newAwards[index].title = e.target.value;
+                                setAwards(newAwards);
+                              }}
+                            />
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <input
+                              type="text"
+                              className="form-input mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-dark focus:border-primary-dark"
+                              placeholder="Description"
+                              value={award.description}
+                              onChange={(e) => {
+                                const newAwards = [...awards];
+                                newAwards[index].description = e.target.value;
+                                setAwards(newAwards);
+                              }}
+                            />
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <FileInput />
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <button
+                              type="button"
+                              className="text-red-600 hover:text-red-900"
+                              onClick={() => handleRemoveAward(index)}
+                            >
+                              Remove
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <button
+                    type="button"
+                    className="mt-2 px-4 py-2 bg-primary-dark text-white rounded"
+                    onClick={handleAddAward}
+                  >
+                    Add Award
+                  </button>
                 </div>
               </form>
             </div>
