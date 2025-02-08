@@ -4,9 +4,14 @@ import { createContext, useContext, useState } from "react";
 
 export type ModalContextType = {
   isOpen: boolean;
-  variant: "profileCompletion" | "planForm";
+  variant: "profileCompletion" | "planForm" | "imageCarousel";
   isClosable: boolean;
-  openModal: (variant: "profileCompletion" | "planForm") => void;
+  images: string[];
+  openModal: (
+    variant: "profileCompletion" | "planForm" | "imageCarousel",
+    closable?: boolean,
+    images?: string[]
+  ) => void;
   closeModal: () => void;
 };
 
@@ -21,18 +26,27 @@ export default function ModalProvider({
   const [variant, setVariant] =
     useState<ModalContextType["variant"]>("profileCompletion");
   const [isClosable, setIsClosable] = useState(true);
+  const [images, setImages] = useState<ModalContextType["images"]>([]);
 
-  function openModal(variant: ModalContextType["variant"], closable = true) {
+  function openModal(
+    variant: ModalContextType["variant"],
+    closable = true,
+    images?: string[]
+  ) {
     setIsOpen(true);
     if (variant) {
       setVariant(variant);
       closable = false;
+    }
+    if (images) {
+      setImages(images);
     }
     setIsClosable(closable);
   }
 
   function closeModal() {
     setIsOpen(false);
+    setImages([]);
   }
 
   return (
@@ -41,6 +55,7 @@ export default function ModalProvider({
         isOpen,
         openModal,
         isClosable,
+        images,
         variant,
         closeModal,
       }}

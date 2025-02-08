@@ -73,7 +73,7 @@ export default async function ExplorePage({
 
   return (
     <section className="relative">
-      <div className="max-w-screen-xl mx-auto hidden sm:block sticky top-20 py-2 z-10 backdrop-blur-sm">
+      <div className="max-w-screen-xl mx-auto hidden sm:block sticky top-20 py-2 z-[9] backdrop-blur-sm">
         <BreadCrum breads={breads} base="explore" />
       </div>
       <h3 className="text-center text-4xl font-semibold py-5 text-primary-dark">

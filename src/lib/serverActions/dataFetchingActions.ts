@@ -564,6 +564,11 @@ export async function getCompaniesByTechStack() {
       reviews: 120,
       description:
         "Alpine Technologies is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    portfolio: [
+        "https://picsum.photos/1600/1200?random=1",
+        "https://picsum.photos/1600/1200?random=2",
+        "https://picsum.photos/1600/1200?random=3",
+    ]
     },
     {
       logo: "https://picsum.photos/300/200",
@@ -576,6 +581,11 @@ export async function getCompaniesByTechStack() {
       reviews: 100,
       description:
         "Tech Solutions is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    portfolio: [
+        "https://picsum.photos/1600/1200?random=4",
+        "https://picsum.photos/1600/1200?random=5",
+        "https://picsum.photos/1600/1200?random=6",
+    ]
     },
     {
       logo: "https://picsum.photos/300/200",
@@ -588,6 +598,11 @@ export async function getCompaniesByTechStack() {
       reviews: 150,
       description:
         "CodeX is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    portfolio: [
+        "https://picsum.photos/1600/1200?random=7",
+        "https://picsum.photos/1600/1200?random=8",
+        "https://picsum.photos/1600/1200?random=9",
+    ]
     },
     {
       logo: "https://picsum.photos/300/200",
@@ -600,6 +615,11 @@ export async function getCompaniesByTechStack() {
       reviews: 110,
       description:
         "Web Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+    portfolio: [
+        "https://picsum.photos/1600/1200?random=10",
+        "https://picsum.photos/1600/1200?random=11",
+        "https://picsum.photos/1600/1200?random=12",
+    ]
     },
     {
       logo: "https://picsum.photos/300/200",
@@ -612,6 +632,11 @@ export async function getCompaniesByTechStack() {
       reviews: 130,
       description:
         "App Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+        portfolio:[
+            "https://picsum.photos/1600/1200?random=13",
+            "https://picsum.photos/1600/1200?random=14",
+            "https://picsum.photos/1600/1200?random=15",
+        ]
     },
     {
       logo: "https://picsum.photos/300/200",
@@ -624,6 +649,11 @@ export async function getCompaniesByTechStack() {
       reviews: 90,
       description:
         "AI Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+        portfolio:[
+            "https://picsum.photos/1600/1200?random=16",
+            "https://picsum.photos/1600/1200?random=17",
+            "https://picsum.photos/1600/1200?random=18",
+        ]
     },
     {
       logo: "https://picsum.photos/300/200",
@@ -636,6 +666,11 @@ export async function getCompaniesByTechStack() {
       reviews: 140,
       description:
         "Finance Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+        portfolio:[
+            "https://picsum.photos/1600/1200?random=19",
+            "https://picsum.photos/1600/1200?random=20",
+            "https://picsum.photos/1600/1200?random=21",
+        ]
     },
     {
       logo: "https://picsum.photos/300/200",
@@ -648,6 +683,11 @@ export async function getCompaniesByTechStack() {
       reviews: 105,
       description:
         "Tech Devs is a software development company that provides web development, mobile app development, artificial intelligence, and finance services.",
+        portfolio:[
+            "https://picsum.photos/1600/1200?random=22",
+            "https://picsum.photos/1600/1200?random=23",
+            "https://picsum.photos/1600/1200?random=24",
+        ]
     },
   ];
   return companies;

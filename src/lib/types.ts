@@ -35,6 +35,7 @@ export type Company = {
   ratings: number;
   reviews: number;
   description: string;
+  portfolio: string[];
 };
 
 export type City = {

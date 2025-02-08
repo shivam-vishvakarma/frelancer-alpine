@@ -6,7 +6,7 @@ export default function OWCBtn() {
   const { openCustomizationModal } = useToggles();
   return (
     <button
-      className="flex justify-center items-center border-2 border-primary-dark px-1 font-semibold rounded-md group transition-all duration-300 text-white bg-primary-dark hover:bg-primary-light hover:text-primary-dark"
+      className="flex items-center border-2 border-primary-dark p-1 font-medium rounded-md group transition-all duration-300 text-white bg-primary-dark hover:bg-primary-light hover:text-primary-dark"
       onClick={() =>
         openCustomizationModal([
           "Feature 1",

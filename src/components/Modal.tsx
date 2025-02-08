@@ -13,9 +13,12 @@ import TimeLine from "./TimeLine";
 import { FaIndianRupeeSign, FaPlus } from "react-icons/fa6";
 import { useState } from "react";
 import * as motion from "motion/react-client";
+import { MdCancel } from "react-icons/md";
+import { Carousel } from "flowbite-react";
+import Image from "next/image";
 
 export default function Modal() {
-  const { isOpen, closeModal, variant, isClosable } = useModal();
+  const { isOpen, closeModal, variant, isClosable, images } = useModal();
 
   return (
     <Dialog
@@ -29,6 +32,9 @@ export default function Modal() {
           <ProfileCompletion closeModal={closeModal} />
         )}
         {variant === "planForm" && <PlanEditForm closeModal={closeModal} />}
+        {variant === "imageCarousel" && (
+          <ImageCarousel images={images} closeModal={closeModal} />
+        )}
       </div>
     </Dialog>
   );
@@ -214,5 +220,29 @@ function PlanEditForm({ closeModal }: { closeModal: () => void }) {
         </button>
       </div>
     </DialogPanel>
+  );
+}
+
+function ImageCarousel({
+  images,
+  closeModal,
+}: {
+  images: string[];
+  closeModal: () => void;
+}) {
+  return (
+    <div className="flex-1 h-full relative">
+      <button
+        onClick={closeModal}
+        className="absolute top-0 right-0 rounded-full m-2 z-50"
+      >
+        <MdCancel size={30} className="text-white" />
+      </button>
+      <Carousel>
+        {images.map((img, index) => (
+          <Image alt="" width={1600} height={1200} key={index} src={img} className="w-full h-full object-contain" />
+        ))}
+      </Carousel>
+    </div>
   );
 }
