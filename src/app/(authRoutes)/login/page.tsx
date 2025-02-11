@@ -37,6 +37,7 @@ export default function LoginPage() {
     queryClient.invalidateQueries({
       queryKey: ["user"],
     });
+    router.push("/");
     stopLoading();
   };
 
