@@ -3,8 +3,6 @@
 import { Category, City, Company, Domain, Stats, Usp } from "../types";
 
 export async function getCategories() {
-  console.log("getCategories");
-
   const categories: Category[] = [
     {
       id: 1,

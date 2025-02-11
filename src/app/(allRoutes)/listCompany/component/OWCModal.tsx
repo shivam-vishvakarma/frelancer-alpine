@@ -1,6 +1,6 @@
 "use client";
 
-import { useToggles } from "@/hooks/context/togglesContext";
+import { useToggles } from "@/lib/hooks/context/togglesContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";

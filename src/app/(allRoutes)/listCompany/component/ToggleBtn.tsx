@@ -1,6 +1,6 @@
 "use client";
 
-import { useToggles } from "@/hooks/context/togglesContext";
+import { useToggles } from "@/lib/hooks/context/togglesContext";
 import { MdFilterList } from "react-icons/md";
 
 export default function ToggleBtn() {

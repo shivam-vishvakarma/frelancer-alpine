@@ -1,6 +1,6 @@
 "use client";
 
-import { ModalContextType, useModal } from "@/hooks/context/modalContext";
+import { ModalContextType, useModal } from "@/lib/hooks/context/modalContext";
 import { useEffect } from "react";
 
 export default function OpenModal({

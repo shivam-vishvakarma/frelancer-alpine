@@ -57,3 +57,26 @@ export type Usp = {
   value: string;
   label: string;
 };
+
+export type LoginData = {
+  email: string;
+  password: string;
+};
+
+export type RegisterData = {
+  name: string;
+  email: string;
+  password: string;
+  confirm_password: string;
+  country: string;
+  user_role: "1" | "2";
+};
+
+export type LoginResponse = {
+  success: boolean;
+  message: string;
+  userdata: {
+    name: string;
+    email: string;
+  };
+};

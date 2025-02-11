@@ -1,6 +1,6 @@
 "use client";
 
-import { useModal } from "@/hooks/context/modalContext";
+import { useModal } from "@/lib/hooks/context/modalContext";
 import PrevImage from "./PrevImage";
 
 export default function CompanyCardPortfolio({ images }: { images: string[] }) {

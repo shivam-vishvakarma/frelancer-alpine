@@ -1,7 +1,7 @@
 "use client";
 
 import Divider from "@/components/Divider";
-import { useToggles } from "@/hooks/context/togglesContext";
+import { useToggles } from "@/lib/hooks/context/togglesContext";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 

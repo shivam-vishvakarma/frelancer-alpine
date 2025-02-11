@@ -1,22 +1,31 @@
 "use client";
 
-import { useUser } from "@/hooks/context/userContext";
+import { useLoader } from "@/lib/hooks/context/loaderContext";
+import { userRegister } from "@/lib/services/authService";
+import { RegisterData } from "@/lib/types";
+import { selectIsAuthenticated } from "@/redux/slices/authSlice";
+import { useQueryClient } from "@tanstack/react-query";
+import { Alert } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function SignupPage() {
   const router = useRouter();
-  const { login } = useUser();
-  const [form, setForm] = useState({
+  const { startLoading, stopLoading } = useLoader();
+  const [error, setError] = useState("");
+  const queryClient = useQueryClient();
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const [form, setForm] = useState<RegisterData>({
     name: "",
     email: "",
     password: "",
-    c_password: "",
+    confirm_password: "",
     country: "india",
-    joinas: "client",
-  });
+    user_role: "2",
+  } as RegisterData);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -26,28 +35,46 @@ export default function SignupPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login({
-      email: form.email,
-      name: form.name,
-      id: "1",
-      avatar: "https://avatars.githubusercontent.com/u/47269252?v=4",
+    startLoading();
+    const res = await userRegister(form);
+    if (res?.error) {
+      setError(res.error);
+      stopLoading();
+      return;
+    }
+    queryClient.invalidateQueries({
+      queryKey: ["user"],
     });
-    if (form.joinas === "client") {
-      router.push("/user");
-    }
-    if (form.joinas === "company") {
-      router.push("/onboarding/company");
-    }
+    stopLoading();
   };
 
-  //   useEffect(() => {
-  //     if (user) {
-  //       router.push("/");
-  //     }
-  //   }, [user, router]);
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push("/");
+    }
+  }, [isAuthenticated, router]);
+
+  useEffect(() => {
+    if (error) {
+      const id = setTimeout(() => {
+        setError("");
+      }, 3000);
+      return () => clearTimeout(id);
+    }
+  }, [error]);
 
   return (
     <div className="bg-bgMain text-black flex justify-center">
+      <div className="fixed z-20 inset-x-0 top-10 max-w-2xl mx-auto">
+        {error && (
+          <Alert onDismiss={() => setError("")} color="failure">
+            <span>
+              <span className="font-medium">{error}</span> - Check your details
+              and try again
+            </span>
+          </Alert>
+        )}
+      </div>
       <div className="max-w-screen-xl m-0 xl:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         <div className="flex-1 bg-primary-dark text-center hidden lg:flex">
           <div
@@ -106,10 +133,10 @@ export default function SignupPage() {
                     <input
                       type="radio"
                       hidden
-                      name="joinas"
-                      value="client"
+                      name="user_role"
+                      value="2"
                       id="client"
-                      checked={form.joinas === "client"}
+                      checked={form.user_role === "2"}
                       required
                       onChange={handleChange}
                       className="hidden"
@@ -141,12 +168,12 @@ export default function SignupPage() {
                     <input
                       type="radio"
                       hidden
-                      name="joinas"
+                      name="user_role"
                       id="company"
                       className="hidden"
                       required
-                      checked={form.joinas === "company"}
-                      value="company"
+                      checked={form.user_role === "1"}
+                      value="1"
                       onChange={handleChange}
                     />
                     <label
@@ -201,9 +228,9 @@ export default function SignupPage() {
                 <input
                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
                   type="password"
-                  name="c_password"
+                  name="confirm_password"
                   required
-                  value={form.c_password}
+                  value={form.confirm_password}
                   pattern={form.password}
                   onChange={handleChange}
                   placeholder="Password"

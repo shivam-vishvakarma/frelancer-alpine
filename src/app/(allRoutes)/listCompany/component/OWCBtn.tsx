@@ -1,6 +1,6 @@
 "use client";
 
-import { useToggles } from "@/hooks/context/togglesContext";
+import { useToggles } from "@/lib/hooks/context/togglesContext";
 
 export default function OWCBtn() {
   const { openCustomizationModal } = useToggles();

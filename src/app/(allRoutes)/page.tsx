@@ -33,7 +33,15 @@ export default async function Home() {
             href={"/category"}
             className="py-1 px-4 rounded-full flex gap-1 bg-white text-primary-dark hover:[transform:rotateX(360deg)] hover:bg-primary-dark hover:text-white transition-all duration-700"
           >
-            <Image src={"/filter_icon.svg"} width={20} height={20} alt="" />
+            <Image
+              src={"/filter_icon.svg"}
+              width={20}
+              height={20}
+              style={{
+                width: "auto",
+              }}
+              alt=""
+            />
             All Filteres
           </Link>
         </menu>
@@ -234,7 +242,10 @@ export default async function Home() {
             alt=""
             width={100}
             height={100}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{
+              width: "auto",
+            }}
+            className="absolute top-1/2 !w-24 left-1/2 -translate-x-1/2 -translate-y-1/2"
           />
         </div>
         <div className="aspect-square sm:aspect-[1.5] md:aspect-[16/6] relative my-4 md:my-10 overflow-hidden rounded-xl">

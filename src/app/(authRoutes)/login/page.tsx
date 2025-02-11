@@ -1,13 +1,21 @@
 "use client";
 
-import { useUser } from "@/hooks/context/userContext";
+import { useLoader } from "@/lib/hooks/context/loaderContext";
+import { userLogin } from "@/lib/services/authService";
+import { selectIsAuthenticated } from "@/redux/slices/authSlice";
+import { useQueryClient } from "@tanstack/react-query";
+import { Alert, Spinner } from "flowbite-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { user, login } = useUser();
+  const queryClient = useQueryClient();
+  const { isLoading, startLoading, stopLoading } = useLoader();
+  const [error, setError] = useState("");
+  const isAuthenticated = useSelector(selectIsAuthenticated);
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -19,22 +27,46 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login({
-      email: form.email,
-      name: "Shivam Vishwakarma",
-      id: "1",
-      avatar: "https://avatars.githubusercontent.com/u/47269252?v=4",
+    startLoading();
+    const res = await userLogin(form);
+    if (res?.error) {
+      setError(res.error);
+      stopLoading();
+      return;
+    }
+    queryClient.invalidateQueries({
+      queryKey: ["user"],
     });
+    stopLoading();
   };
 
   useEffect(() => {
-    if (user) {
+    if (isAuthenticated) {
       router.push("/");
     }
-  }, [user, router]);
+  }, [isAuthenticated, router]);
+
+  useEffect(() => {
+    if (error) {
+      const id = setTimeout(() => {
+        setError("");
+      }, 3000);
+      return () => clearTimeout(id);
+    }
+  }, [error]);
 
   return (
     <div className="bg-bgMain text-black flex justify-center">
+      <div className="fixed z-20 inset-x-0 top-10 max-w-2xl mx-auto">
+        {error && (
+          <Alert onDismiss={() => setError("")} color="failure">
+            <span>
+              <span className="font-medium">{error}</span> - Invalid credentials
+              or network error
+            </span>
+          </Alert>
+        )}
+      </div>
       <div className="max-w-screen-xl m-0 xl:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
         <div className="lg:w-1/2 xl:w-6/12 p-6 sm:p-12">
           <div className="text-center">
@@ -85,6 +117,7 @@ export default function LoginPage() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="Email"
+                  required
                 />
                 <input
                   className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
@@ -93,6 +126,7 @@ export default function LoginPage() {
                   value={form.password}
                   onChange={handleChange}
                   placeholder="Password"
+                  required
                 />
                 <button
                   type="submit"
@@ -110,7 +144,8 @@ export default function LoginPage() {
                     <circle cx="8.5" cy={7} r={4} />
                     <path d="M20 8v6M23 11h-6" />
                   </svg>
-                  <span className="ml-2">Sign In</span>
+                  <span className="mx-2">Sign In</span>
+                  {isLoading && <Spinner color="success" />}
                 </button>
               </form>
               <p className="mt-6 text-xs text-gray-600 text-center">

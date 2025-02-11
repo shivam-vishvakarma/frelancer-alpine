@@ -1,6 +1,6 @@
 "use client";
 
-import { useModal } from "@/hooks/context/modalContext";
+import { useModal } from "@/lib/hooks/context/modalContext";
 import { getTitleFromSlug } from "@/lib/utils/utils";
 import {
   Description,
@@ -240,7 +240,14 @@ function ImageCarousel({
       </button>
       <Carousel>
         {images.map((img, index) => (
-          <Image alt="" width={1600} height={1200} key={index} src={img} className="w-full h-full object-contain" />
+          <Image
+            alt=""
+            width={1600}
+            height={1200}
+            key={index}
+            src={img}
+            className="w-full h-full object-contain"
+          />
         ))}
       </Carousel>
     </div>

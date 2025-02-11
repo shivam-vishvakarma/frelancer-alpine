@@ -5,8 +5,17 @@ import Link from "next/link";
 import { useState } from "react";
 import Divider from "./Divider";
 import NotificationCard from "./NotifictionCard";
-import { useUser } from "@/hooks/context/userContext";
 import { usePathname } from "next/navigation";
+import { useSelector } from "react-redux";
+import {
+  logout,
+  selectIsAuthenticated,
+  selectUser,
+} from "@/redux/slices/authSlice";
+import { userLogout } from "@/lib/services/authService";
+import { useQueryClient } from "@tanstack/react-query";
+import { useDispatch } from "react-redux";
+import { useLoader } from "@/lib/hooks/context/loaderContext";
 
 export default function Header({
   isOnDashboard = false,
@@ -15,12 +24,23 @@ export default function Header({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+  const { startLoading, stopLoading } = useLoader();
+  const user = useSelector(selectUser);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
   const pathname = usePathname();
 
-  const { user, logout } = useUser();
-
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    startLoading();
+    const res = await userLogout();
+    if (res) {
+      dispatch(logout());
+      queryClient.removeQueries({
+        queryKey: ["user"],
+      });
+    }
+    stopLoading();
   };
 
   const getClassNames: (path: string) => string = (path: string) => {
@@ -138,7 +158,7 @@ export default function Header({
               className="w-full h-full object-cover"
             />
           </Link>
-          {user ? (
+          {isAuthenticated ? (
             <div className="contents">
               <button
                 onClick={() => setIsNotificationOpen((prev) => !prev)}
