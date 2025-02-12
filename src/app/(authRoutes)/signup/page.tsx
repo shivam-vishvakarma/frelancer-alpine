@@ -3,20 +3,20 @@
 import { useLoader } from "@/lib/hooks/context/loaderContext";
 import { userRegister } from "@/lib/services/authService";
 import { RegisterData } from "@/lib/types";
-import { selectIsAuthenticated } from "@/redux/slices/authSlice";
-import { useQueryClient } from "@tanstack/react-query";
+import { login, selectIsAuthenticated } from "@/redux/slices/authSlice";
 import { Alert } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 export default function SignupPage() {
   const router = useRouter();
   const { startLoading, stopLoading } = useLoader();
   const [error, setError] = useState("");
-  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const [form, setForm] = useState<RegisterData>({
     name: "",
@@ -42,9 +42,7 @@ export default function SignupPage() {
       stopLoading();
       return;
     }
-    queryClient.invalidateQueries({
-      queryKey: ["user"],
-    });
+    dispatch(login({ user: res }));
     stopLoading();
   };
 

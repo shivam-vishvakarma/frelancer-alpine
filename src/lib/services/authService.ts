@@ -42,7 +42,7 @@ export const userLogin = async ({ email, password }: LoginData) => {
     }
     if (data.access_token) {
       localStorage.setItem("token", data.access_token);
-      return data;
+      return await getLoginUser();
     }
     return { error: "Something went wrong" };
   } catch (error) {
@@ -51,7 +51,7 @@ export const userLogin = async ({ email, password }: LoginData) => {
   }
 };
 
-export const userRegister = async (data: RegisterData) => {
+export const userRegister = async (formData: RegisterData) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/user/register`,
@@ -60,19 +60,19 @@ export const userRegister = async (data: RegisterData) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       }
     );
     if (response?.status === 404) {
       return { error: "Network Error" };
     }
-    const res = await response.json();
-    if (res.errors) {
-      return { error: JSON.stringify(res.errors) };
+    const data = await response.json();
+    if (data.errors) {
+      return { error: JSON.stringify(data.errors) };
     }
-    if (res.access_token) {
-      localStorage.setItem("token", res.access_token);
-      return res;
+    if (data.access_token) {
+      localStorage.setItem("token", data.access_token);
+      return await getLoginUser();
     }
     return { error: "Something went wrong" };
   } catch (error) {

@@ -2,19 +2,19 @@
 
 import { useLoader } from "@/lib/hooks/context/loaderContext";
 import { userLogin } from "@/lib/services/authService";
-import { selectIsAuthenticated } from "@/redux/slices/authSlice";
-import { useQueryClient } from "@tanstack/react-query";
+import { login, selectIsAuthenticated } from "@/redux/slices/authSlice";
 import { Alert, Spinner } from "flowbite-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
 export default function LoginPage() {
   const router = useRouter();
-  const queryClient = useQueryClient();
   const { isLoading, startLoading, stopLoading } = useLoader();
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const [form, setForm] = useState({
     email: "",
@@ -34,10 +34,7 @@ export default function LoginPage() {
       stopLoading();
       return;
     }
-    queryClient.invalidateQueries({
-      queryKey: ["user"],
-    });
-    router.push("/");
+    dispatch(login({ user: res }));
     stopLoading();
   };
 
