@@ -38,6 +38,14 @@ export type Company = {
   portfolio: string[];
 };
 
+export type CompanyInfoData = {
+  companyName: string;
+  companyWebsite: string;
+  primaryContactName: string;
+  primaryContactNumber: string;
+  companyEmail: string;
+};
+
 export type City = {
   value: string;
   label: string;

@@ -34,7 +34,7 @@ export default function LoginPage() {
       stopLoading();
       return;
     }
-    dispatch(login({ user: res }));
+    dispatch(login({ user: res.userdata }));
     stopLoading();
   };
 

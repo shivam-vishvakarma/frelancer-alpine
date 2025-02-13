@@ -13,6 +13,7 @@ import {
   selectUser,
 } from "@/redux/slices/authSlice";
 import { userLogout } from "@/lib/services/authService";
+import { useQueryClient } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 import { useLoader } from "@/lib/hooks/context/loaderContext";
 
@@ -23,6 +24,7 @@ export default function Header({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const { startLoading, stopLoading } = useLoader();
   const user = useSelector(selectUser);
@@ -34,6 +36,9 @@ export default function Header({
     const res = await userLogout();
     if (res) {
       dispatch(logout());
+      queryClient.removeQueries({
+        queryKey: ["user"],
+      });
     }
     stopLoading();
   };
