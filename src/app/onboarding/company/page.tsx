@@ -5,53 +5,46 @@ import {
   getCommonUsp,
   getLocations,
 } from "@/lib/serverActions/dataFetchingActions";
-import { City, OfficeAndEmployeeData, Usp } from "@/lib/types";
+import { City, CompanyInfoData, OfficeAndEmployeeData, Usp } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Select, { MultiValue } from "react-select";
 import CreatableSelect from "react-select/creatable";
+
+const companyInfoDataInitial = {
+  companyName: "",
+  companyWebsite: "",
+  primaryContactName: "",
+  primaryContactNumber: "",
+  companyEmail: "",
+};
+
+const officeAndEmployeeDataInitial = {
+  yearOfIncorporation: "",
+  noOfOffices: "",
+  officeLocations: [],
+  noOfEmployees: "",
+  companyTaxId: "",
+  companyUSP: [],
+  aboutCompany: "",
+};
 
 export default function CompanyOnboardingPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [locationOptions, setLocationOptions] = useState<City[]>();
   const [uspOptions, setUspOptions] = useState<Usp[]>();
-  const [companyInfoData, setCompanyInfoData] = useState({
-    companyName: "",
-    companyWebsite: "",
-    primaryContactName: "",
-    primaryContactNumber: "",
-    companyEmail: "",
-  });
+  const [companyInfoData, setCompanyInfoData] = useState<CompanyInfoData>(
+    companyInfoDataInitial
+  );
   const [officeAndEmployeeData, setOfficeAndEmployeeData] =
-    useState<OfficeAndEmployeeData>({
-      yearOfIncorporation: "",
-      noOfOffices: "",
-      officeLocations: [],
-      noOfEmployees: "",
-      companyTaxId: "",
-      companyUSP: [],
-      aboutCompany: "",
-    });
+    useState<OfficeAndEmployeeData>(officeAndEmployeeDataInitial);
   const [credentials, setCredentials] = useState([
     { title: "", description: "", file: null },
   ]);
   const [awards, setAwards] = useState([
     { title: "", description: "", file: null },
   ]);
-
-  //   const [step3Data, setStep3Data] = useState({
-  //     revenue: "",
-  //     profitLoss: "",
-  //     balanceSheet: "",
-  //     companyRegistrationCertificate: "",
-  //     companyPANCard: "",
-  //     companyGSTCertificate: "",
-  //   });
-  //   const [step4Data, setStep4Data] = useState({
-  //     companyCredentials: "",
-  //     companyAwards: "",
-  //   });
 
   const handleCompanyInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCompanyInfoData((prev) => ({
@@ -63,27 +56,16 @@ export default function CompanyOnboardingPage() {
   const handleOfficeAndEmployeeChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
+    console.log(e.target.name, e.target.value);
+
     setOfficeAndEmployeeData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
-  //   const handleStep3Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     setStep3Data((prev) => ({
-  //       ...prev,
-  //       [e.target.name]: e.target.value,
-  //     }));
-  //   };
-
-  //   const handleStep4Change = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     setStep4Data((prev) => ({
-  //       ...prev,
-  //       [e.target.name]: e.target.value,
-  //     }));
-  //   };
-
   const handleNext = () => {
+    localStorage.setItem("companyInfoData", JSON.stringify(companyInfoData));
     setCurrentStep((prev) => prev + 1);
   };
 
@@ -123,6 +105,12 @@ export default function CompanyOnboardingPage() {
     getCommonUsp().then((usps) => {
       setUspOptions(usps);
     });
+    setCompanyInfoData(
+      JSON.parse(
+        localStorage.getItem("companyInfoData") ||
+          JSON.stringify(companyInfoDataInitial)
+      )
+    );
   }, []);
 
   return (
@@ -299,12 +287,12 @@ export default function CompanyOnboardingPage() {
                   <FileInput />
                 </div>
                 <div className="col-span-8 space-y-2 group">
-                  <label className="block text-gray-700 text-sm md:text-base">
+                  <label className="text-gray-700 text-sm md:text-base flex items-center">
                     Company Unique Strength/ USP
+                    <small className="ml-2 hidden group-hover:inline text-yellow-500">
+                      Choose From Dropdown or Add New
+                    </small>
                   </label>
-                  <small className="hidden group-focus-within:block text-yellow-500">
-                    Choose From Dropdown or Add New
-                  </small>
                   <CreatableSelect
                     isMulti
                     value={officeAndEmployeeData.companyUSP}

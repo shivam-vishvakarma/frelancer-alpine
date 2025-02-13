@@ -68,7 +68,7 @@ export const userRegister = async (formData: RegisterData) => {
     }
     const data = await response.json();
     if (data.errors) {
-      return { error: JSON.stringify(data.errors) };
+      return { error: JSON.stringify(data.errors), userdata: null };
     }
     if (data.access_token) {
       localStorage.setItem("token", data.access_token);

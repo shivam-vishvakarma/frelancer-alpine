@@ -36,13 +36,13 @@ export default function SignupPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     startLoading();
-    const res: any = await userRegister(form);
+    const res = await userRegister(form);
     if (res?.error) {
       setError(res.error);
       stopLoading();
       return;
     }
-    dispatch(login({ user: res.userdata }));
+    dispatch(login({ user: res?.userdata }));
     stopLoading();
   };
 

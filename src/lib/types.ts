@@ -83,6 +83,7 @@ export type RegisterData = {
 export type LoginResponse = {
   success: boolean;
   message: string;
+  error?: string;
   userdata: {
     name: string;
     email: string;
